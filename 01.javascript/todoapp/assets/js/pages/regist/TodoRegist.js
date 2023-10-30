@@ -25,6 +25,7 @@ const TodoRegist = function () {
         axios.post("http://localhost:33088/api/todolist", {
           title: titleValue,
           content: contentValue,
+          done: false,
         });
         alert("할 일이 등록되었습니다.");
         window.location.replace("/");
@@ -38,7 +39,7 @@ const TodoRegist = function () {
   container.setAttribute("id", "crete-container");
 
   const formCreate = document.createElement("form");
-
+  //할일 제목
   const titleDiv = document.createElement("div");
   const titleLabel = document.createTextNode("할일");
   const titleInput = document.createElement("input");
@@ -46,7 +47,7 @@ const TodoRegist = function () {
   titleInput.setAttribute("name", "title-create");
   titleInput.setAttribute("placeholder", "할 일을 입력하세요.");
   titleDiv.appendChild(titleLabel);
-
+  //상세내용
   const contentDiv = document.createElement("div");
   const contentLabel = document.createTextNode("상세내용");
   const contentInput = document.createElement("textarea");
