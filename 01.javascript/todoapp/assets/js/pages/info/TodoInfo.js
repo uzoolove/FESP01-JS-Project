@@ -17,7 +17,7 @@ const TodoInfo = async function ({ _id } = {}) {
   } catch (e) {
     console.error(error);
   }
-  console.log("2", data);
+  // console.log("2", data);
   const content = document.createElement("div");
 
   const container = document.createElement("div");
@@ -27,20 +27,21 @@ const TodoInfo = async function ({ _id } = {}) {
   ul1.setAttribute("class", "todolist");
   ul2.setAttribute("class", "todolist");
 
-  for (let key in data) {
-    let item = data[key];
-    const li = document.createElement("div");
-    const text = document.createTextNode(`${key}`);
-    li.appendChild(text);
-    ul1.appendChild(li);
-  }
+  const substituteKeyNames = {_id:'아이디', title:'제목', content:'내용', createdAt:'생성일', updatedAt:'수정일'}
 
-  for (let key in data) {
-    let item = data[key];
-    const li = document.createElement("div");
-    const text = document.createTextNode(`${item}`);
-    li.appendChild(text);
-    ul2.appendChild(li);
+  for (const [key, item] of Object.entries(data)){
+    if (substituteKeyNames[key]){
+      const substituteKeyName = substituteKeyNames[key]
+      const li1 = document.createElement("div");
+      const text1 = document.createTextNode(`${substituteKeyName}`);
+      li1.appendChild(text1);
+      ul1.appendChild(li1);
+
+      const li2 = document.createElement("div");
+      const text2 = document.createTextNode(`${item}`);
+      li2.appendChild(text2);
+      ul2.appendChild(li2);
+    }
   }
 
   container.appendChild(ul1);
