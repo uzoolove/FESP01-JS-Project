@@ -5,6 +5,7 @@ import TodoRegist from '../regist/TodoRegist.js';
 import TodoInfo from '../info/TodoInfo.js';
 
 const TodoList = async function(){
+  const BASE_URL = 'http://localhost:33088';
   const page = document.createElement('div');
   page.setAttribute('id', 'page');
   
@@ -12,7 +13,7 @@ const TodoList = async function(){
   content.setAttribute('id', 'content');
   let response;
   try{
-    response = await axios('http://localhost:33088/api/todolist');
+    response = await axios(`${ BASE_URL }/api/todolist`)
 
     const ul = document.createElement('ul');
     ul.setAttribute('class', 'todolist');
