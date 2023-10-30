@@ -24,14 +24,22 @@ const TodoInfo = async function ({ _id } = {}) {
   const ul1 = document.createElement("div");
   const ul2 = document.createElement("div");
 
-  ul1.setAttribute("class", "todolist");
-  ul2.setAttribute("class", "todolist");
+  ul1.setAttribute("class", "todolistLabel");
+  ul2.setAttribute("class", "todolistContent");
+  container.setAttribute("class", "todolistContainer");
+  content.setAttribute("class", "todolistDetailContainer");
 
-  const substituteKeyNames = {_id:'아이디', title:'제목', content:'내용', createdAt:'생성일', updatedAt:'수정일'}
+  const substituteKeyNames = {
+    _id: "아이디",
+    title: "제목",
+    content: "내용",
+    createdAt: "생성일",
+    updatedAt: "수정일",
+  };
 
-  for (const [key, item] of Object.entries(data)){
-    if (substituteKeyNames[key]){
-      const substituteKeyName = substituteKeyNames[key]
+  for (const [key, item] of Object.entries(data)) {
+    if (substituteKeyNames[key]) {
+      const substituteKeyName = substituteKeyNames[key];
       const li1 = document.createElement("div");
       const text1 = document.createTextNode(`${substituteKeyName}`);
       li1.appendChild(text1);
@@ -46,9 +54,7 @@ const TodoInfo = async function ({ _id } = {}) {
 
   container.appendChild(ul1);
   container.appendChild(ul2);
-  container.style.display = "flex";
-  container.style.flexDirection = "row";
-  container.style.gap = "20px";
+
   content.appendChild(container);
 
   //뒤로가기 버튼
@@ -83,6 +89,10 @@ const TodoInfo = async function ({ _id } = {}) {
     }
   });
   content.append(btnContainer);
+
+  btnHome.setAttribute("class", "btnHome");
+  btnDelete.setAttribute("class", "btnDelete");
+  btnContainer.setAttribute("class", "btnContainer");
 
   page.appendChild(Header("TODO App 상세 조회"));
   page.appendChild(content);
