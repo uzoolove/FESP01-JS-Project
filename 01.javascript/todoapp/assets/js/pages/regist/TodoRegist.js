@@ -19,17 +19,18 @@ const TodoRegist = function () {
     if (contentValue === "") {
       alert("상세 내용을 입력하세요");
     }
-
-    // axios post
-    try {
-      axios.post("http://localhost:33088/api/todolist", {
-        title: titleValue,
-        content: contentValue,
-      });
-      alert("등록이 성공적으로 완료되었습니다.");
-      window.location.replace("/");
-    } catch (err) {
-      console.log(err);
+    if (confirm("할 일을 등록하시겠습니까?")) {
+      // axios post
+      try {
+        axios.post("http://localhost:33088/api/todolist", {
+          title: titleValue,
+          content: contentValue,
+        });
+        alert("할 일이 등록되었습니다.");
+        window.location.replace("/");
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
