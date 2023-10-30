@@ -45,20 +45,34 @@ const TodoInfo = async function ({ _id } = {}) {
   container.style.gap = "20px";
   content.appendChild(container)
 
+  //뒤로가기 버튼
+  const btnContainer = document.createElement('div')
   const btnHome = document.createElement('button');
-  const btnTitle = document.createTextNode('뒤로가기');
-  btnHome.appendChild(btnTitle);
-  content.appendChild(btnHome);
+  const btnHomeTitle = document.createTextNode('뒤로가기');
+  btnHome.appendChild(btnHomeTitle);
+  btnContainer.appendChild(btnHome);
 
   btnHome.addEventListener('click', async () => {
     const toDoListPage = await ToDoList();
     console.log(toDoListPage)
     document.querySelector('#page').replaceWith(toDoListPage);
   });
+  btnContainer.appendChild(btnHome);
 
-  // content.style.display = "flex";
-  // content.style.flexDirection = "row";
-  // content.style.gap = "20px";
+  //삭제버튼
+  const btnDelete = document.createElement('button');
+  const btnDeleteTitle = document.createTextNode('삭제');
+  btnDelete.appendChild(btnDeleteTitle);
+  btnContainer.appendChild(btnDelete);
+
+  btnDelete.addEventListener('click', async () => {
+    let response = await axios.delete(`${BASE_URL}/api/todolist/${_id}`);
+    const toDoListPage = await ToDoList();
+    console.log(toDoListPage)
+    document.querySelector('#page').replaceWith(toDoListPage);
+  });
+  content.append(btnContainer)
+
 
   page.appendChild(Header("TODO App 상세 조회"));
   page.appendChild(content);
