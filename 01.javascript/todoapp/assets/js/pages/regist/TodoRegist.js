@@ -45,10 +45,9 @@ const TodoRegist = function () {
   detailBox.className = "detailBox";
   const detail = document.createElement("label");
   const detailText = document.createTextNode("상세 내용");
-  const detailInput = document.createElement("input");
+  const detailInput = document.createElement("textarea");
   detail.htmlFor = "detail";
   detailInput.id = "detail";
-  detailInput.type = "textarea";
   detailInput.className = "detailInput";
 
   form.appendChild(detailBox);
