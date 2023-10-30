@@ -6,9 +6,19 @@ const TodoInfo = async function({_id} = {}){
   const page = document.createElement('div');
   page.setAttribute('id', 'page');
 
+  const BASE_URL = 'http://localhost:33088';
+  let response = await axios(`${ BASE_URL }/api/todolist/${_id}`)
+  console.log(response)
+  const data = response.data.item
+
   const content = document.createElement('div');
-  const text = document.createTextNode(`_id=${_id} 상세 조회 화면`);
-  content.appendChild(text);
+  console.log(data)
+
+  for (let key in data){
+    let item = data[key]
+    const text = document.createTextNode(`${item}`);
+    content.appendChild(text)
+  }
 
   page.appendChild(Header('TODO App 상세 조회'));
   page.appendChild(content);
