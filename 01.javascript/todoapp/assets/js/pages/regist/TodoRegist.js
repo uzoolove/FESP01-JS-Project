@@ -1,39 +1,66 @@
 // 할일 등록
-import Header from "../../layout/Header.js";
-import Footer from "../../layout/Footer.js";
 
 const TodoRegist = function () {
   const page = document.createElement("div");
   page.setAttribute("id", "page");
 
   const content = document.createElement("div");
+  content.id = "regist";
+  const wrapper = document.createElement("div");
+  wrapper.className = "wrapper";
+  content.appendChild(wrapper);
+
   const form = document.createElement("form");
+  form.className = "form";
+  wrapper.appendChild(form);
 
-  content.appendChild(form);
+  //todoApp 등록
+  const headerNode = document.createElement("div");
+  headerNode.className = "headerNode";
+  const h1 = document.createElement("h1");
+  h1.className = "h1";
+  const headerTitle = document.createTextNode("TodoApp 등록");
+  h1.appendChild(headerTitle);
+  headerNode.appendChild(h1);
+  form.appendChild(headerNode);
 
+  //제목 입력창
+  const titleBox = document.createElement("div");
+  titleBox.className = "titleBox";
   const title = document.createElement("label");
   const titleText = document.createTextNode("제목");
   const titleInput = document.createElement("input");
   title.htmlFor = "title";
   titleInput.id = "title";
   titleInput.type = "text";
+  titleInput.className = "titleInput";
 
+  form.appendChild(titleBox);
+  titleBox.appendChild(title);
+  title.appendChild(titleText);
+  titleBox.appendChild(titleInput);
+
+  //상세 내용
+  const detailBox = document.createElement("div");
+  detailBox.className = "detailBox";
   const detail = document.createElement("label");
   const detailText = document.createTextNode("상세 내용");
   const detailInput = document.createElement("input");
   detail.htmlFor = "detail";
   detailInput.id = "detail";
-  detailInput.type = "text";
+  detailInput.type = "textarea";
+  detailInput.className = "detailInput";
 
-  form.appendChild(title);
-  title.appendChild(titleText);
-  form.appendChild(titleInput);
-  form.appendChild(detail);
+  form.appendChild(detailBox);
+  detailBox.appendChild(detail);
   detail.appendChild(detailText);
-  form.appendChild(detailInput);
+  detailBox.appendChild(detailInput);
 
+  // 추가하기 버튼
   const addButton = document.createElement("button");
+  addButton.className = "addButton";
   const addText = document.createTextNode("추가하기");
+  addText.className = "addText";
   addButton.appendChild(addText);
   form.appendChild(addButton);
 
@@ -51,9 +78,7 @@ const TodoRegist = function () {
       });
   });
 
-  page.appendChild(Header("TODO App 등록"));
   page.appendChild(content);
-  page.appendChild(Footer());
 
   return page;
 };
