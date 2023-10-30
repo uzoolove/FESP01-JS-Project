@@ -9,19 +9,34 @@ const TodoList = async function () {
   const page = document.createElement("div");
   page.setAttribute("id", "page");
 
-  const content = document.createElement("div");
-  content.setAttribute("id", "content");
+  const contentDone = document.createElement("div");
+  const contentNotDone = document.createElement("div");
+  contentDone.setAttribute("id", "content-done");
+  contentNotDone.setAttribute("id", "content-not-done");
   let response;
   try {
     response = await axios("http://localhost:33088/api/todolist");
 
-    const ul = document.createElement("ul");
-    ul.setAttribute("class", "todolist");
     response.data?.items.forEach((item) => {
-      const li = document.createElement("li");
+      const li = document.createElement("div");
+
+      // drag 속성
+      li.draggable = true;
+      li.id = item._id;
+      li.ondragstart = (e) => {
+        e.dataTransfer.setData("text/plain", e.target.id);
+      };
+
       const todoInfoLink = document.createElement("a");
+      const checkbox = document.createElement("input");
+      checkbox.setAttribute("id", "checkbox");
+      checkbox.setAttribute("type", "checkbox");
+      checkbox.setAttribute("name", "checkbox");
+      checkbox.setAttribute("checked", false);
+      checkbox.checked = item.done;
       todoInfoLink.setAttribute("href", `info?_id=${item._id}`);
       const title = document.createTextNode(item.title);
+      li.appendChild(checkbox);
 
       todoInfoLink.addEventListener("click", async function (event) {
         // 브라우저의 기본 동작 취소(<a> 태그 동작 안하도록)
@@ -32,14 +47,13 @@ const TodoList = async function () {
 
       todoInfoLink.appendChild(title);
       li.appendChild(todoInfoLink);
-      ul.appendChild(li);
+      contentDone.appendChild(li);
     });
-    content.appendChild(ul);
 
     const btnRegist = document.createElement("button");
     const btnTitle = document.createTextNode("등록");
     btnRegist.appendChild(btnTitle);
-    content.appendChild(btnRegist);
+    page.appendChild(btnRegist);
 
     btnRegist.addEventListener("click", () => {
       const registPage = TodoRegist();
@@ -48,11 +62,31 @@ const TodoList = async function () {
     });
   } catch (err) {
     const error = document.createTextNode("일시적인 오류 발생");
-    content.appendChild(error);
+    page.appendChild(error);
   }
 
+  // allow drop
+  function allowDrop(e) {
+    e.preventDefault();
+  }
+
+  // drop
+  function drop(e, isDone) {
+    e.preventDefault();
+    const id = e.dataTransfer.getData("text/plain");
+    const dragEl = document.getElementById(id);
+    e.target.appendChild(dragEl);
+  }
+
+  // drag & drop event 추가
+  contentDone.ondragover = allowDrop;
+  contentDone.ondrop = (e) => drop(e, true);
+  contentNotDone.ondragover = allowDrop;
+  contentNotDone.ondrop = (e) => drop(e, false);
+
   page.appendChild(Header("TODO App 목록 조회"));
-  page.appendChild(content);
+  page.appendChild(contentDone);
+  page.appendChild(contentNotDone);
   page.appendChild(Footer());
   return page;
 };
