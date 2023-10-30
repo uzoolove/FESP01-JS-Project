@@ -1,0 +1,50 @@
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  height: 720px;
+}
+
+@media screen and (max-width: 769px) {
+  /* 대형 스마트폰 또는 태블릿에 대한 스타일을 여기에 추가하세요 */
+
+  body {
+    background-color: #383cc2;
+  }
+  h1 {
+    color: white;
+  }
+  /* .mainContainer {
+    background-color: white;
+    width: 300px;
+    height: 400px;
+  } */
+  #content {
+    background-color: white;
+    width: 390px;
+    height: 500px;
+    border-radius: 40px 40px 0 0;
+    padding-top: 25px;
+  }
+
+  .todoItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* .todolist {
+    padding: 37px;
+  } */
+}
