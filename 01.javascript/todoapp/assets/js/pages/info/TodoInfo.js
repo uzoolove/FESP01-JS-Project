@@ -1,21 +1,26 @@
 // 할일 등록
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
-import ToDoList from '../list/TodoList.js';
+import ToDoList from "../list/TodoList.js";
 
 const TodoInfo = async function ({ _id } = {}) {
   const page = document.createElement("div");
   page.setAttribute("id", "page");
 
   const BASE_URL = "http://localhost:33088";
-  let response = await axios(`${BASE_URL}/api/todolist/${_id}`);
-  console.log(response);
-  const data = response.data.item;
-
+  let response;
+  let data;
+  try {
+    response = await axios(`${BASE_URL}/api/todolist/${_id}`);
+    data = response.data.item;
+    console.log("1", data);
+  } catch (e) {
+    console.error(error);
+  }
+  console.log("2", data);
   const content = document.createElement("div");
-  console.log(data);
 
-  const container = document.createElement("div")
+  const container = document.createElement("div");
   const ul1 = document.createElement("div");
   const ul2 = document.createElement("div");
 
@@ -43,36 +48,40 @@ const TodoInfo = async function ({ _id } = {}) {
   container.style.display = "flex";
   container.style.flexDirection = "row";
   container.style.gap = "20px";
-  content.appendChild(container)
+  content.appendChild(container);
 
   //뒤로가기 버튼
-  const btnContainer = document.createElement('div')
-  const btnHome = document.createElement('button');
-  const btnHomeTitle = document.createTextNode('뒤로가기');
+  const btnContainer = document.createElement("div");
+  const btnHome = document.createElement("button");
+  const btnHomeTitle = document.createTextNode("뒤로가기");
   btnHome.appendChild(btnHomeTitle);
   btnContainer.appendChild(btnHome);
 
-  btnHome.addEventListener('click', async () => {
+  btnHome.addEventListener("click", async () => {
     const toDoListPage = await ToDoList();
-    console.log(toDoListPage)
-    document.querySelector('#page').replaceWith(toDoListPage);
+    console.log(toDoListPage);
+    document.querySelector("#page").replaceWith(toDoListPage);
   });
   btnContainer.appendChild(btnHome);
 
   //삭제버튼
-  const btnDelete = document.createElement('button');
-  const btnDeleteTitle = document.createTextNode('삭제');
+  const btnDelete = document.createElement("button");
+  const btnDeleteTitle = document.createTextNode("삭제");
   btnDelete.appendChild(btnDeleteTitle);
   btnContainer.appendChild(btnDelete);
 
-  btnDelete.addEventListener('click', async () => {
-    let response = await axios.delete(`${BASE_URL}/api/todolist/${_id}`);
-    const toDoListPage = await ToDoList();
-    console.log(toDoListPage)
-    document.querySelector('#page').replaceWith(toDoListPage);
+  btnDelete.addEventListener("click", async () => {
+    try {
+      let res = await axios.delete(`${BASE_URL}/api/todolist/${_id}`);
+      const toDoListPage = await ToDoList();
+      console.log(toDoListPage);
+      document.querySelector("#page").replaceWith(toDoListPage);
+      content.append(btnContainer);
+    } catch (e) {
+      console.error(error);
+    }
   });
-  content.append(btnContainer)
-
+  content.append(btnContainer);
 
   page.appendChild(Header("TODO App 상세 조회"));
   page.appendChild(content);
