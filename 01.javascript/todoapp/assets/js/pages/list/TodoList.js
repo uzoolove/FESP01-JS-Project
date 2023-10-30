@@ -7,10 +7,10 @@ import TodoInfo from "../info/TodoInfo.js";
 const TodoList = async function () {
   const page = document.createElement("div");
   page.setAttribute("id", "page");
-  axios.defaults.baseURL = "http://localhost:33088/api/todolist";
   const content = document.createElement("div");
   content.setAttribute("id", "content");
   let response;
+  axios.defaults.baseURL = "http://localhost:33088/api/todolist";
   response = await axios();
   try {
     const ul = document.createElement("ul");
