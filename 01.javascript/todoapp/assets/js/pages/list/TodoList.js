@@ -13,7 +13,7 @@ const TodoList = async function(){
   content.setAttribute('id', 'content');
   let response;
   try{
-    response = await axios(`${ BASE_URL }/api/todolist`);
+    response = await axios(`${ BASE_URL }/api/todolist`)
 
     const ul = document.createElement('ul');
     ul.setAttribute('class', 'todolist');
