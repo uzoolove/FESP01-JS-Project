@@ -1,3 +1,74 @@
+.todolistLabel {
+  display: flex;
+  flex-direction: column;
+  color: #272727;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.54px;
+  gap: 32px;
+}
+.todolistContent {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  color: #272727;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.6px;
+  width: 50%;
+}
+.todolistContainer {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  gap: 114px;
+  margin: 54px auto 0;
+}
+.todolistDetailContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  background-color: white;
+  width: 70%;
+  margin: 0 auto;
+  padding: 30px 40px;
+  justify-content: space-around;
+  align-content: center;
+  box-shadow: 3px 10px 15px -3px rgba(68, 68, 68, 0.25);
+}
+.btnHome {
+  width: 136px;
+  height: 55px;
+  border-radius: 25px;
+  border: none;
+  background-color: #f3f3f3;
+  box-shadow: 13px 10px 15px rgba(68, 68, 68, 0.25);
+  color: #606060;
+  font-size: 22px;
+  font-weight: 300;
+}
+.btnDelete {
+  width: 136px;
+  height: 55px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ff6a61;
+  box-shadow: 13px 10px 15px rgba(68, 68, 68, 0.25);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 300;
+}
+.btnContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  margin: 54px auto;
+}
+
 * {
     margin: 0;
     padding: 0;
