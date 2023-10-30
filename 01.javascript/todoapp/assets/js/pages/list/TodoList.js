@@ -14,6 +14,7 @@ const TodoList = async function () {
   const contentNotDone = document.createElement("div");
   contentDone.setAttribute("id", "content-done");
   contentNotDone.setAttribute("id", "content-not-done");
+
   let response;
 
   // 체크박스 클릭 시 호출될 함수
@@ -30,6 +31,15 @@ const TodoList = async function () {
 
   try {
     response = await axios("http://localhost:33088/api/todolist");
+
+    //section title 및 TODO: 각 카테고리의 갯수
+    const doneTitle = document.createElement("h3");
+    doneTitle.textContent = "Done";
+    contentDone.appendChild(doneTitle);
+
+    const notDoneTitle = document.createElement("h3");
+    notDoneTitle.textContent = "Todo";
+    contentNotDone.appendChild(notDoneTitle);
 
     response.data?.items.forEach((item) => {
       const title = document.createTextNode(item.title);
