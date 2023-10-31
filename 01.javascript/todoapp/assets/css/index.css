@@ -1,12 +1,55 @@
 body {
-  /* display: flex;
-  justify-content: center; */
   height: 100vh;
   background-color: #e8e8e8;
   font-family: "Noto Sans KR", sans-serif;
 }
 header {
   width: 390px;
+}
+
+nav {
+  display: flex;
+}
+
+nav > i {
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.todoUpdateButton,
+.todoDeleteButton {
+  width: 70px;
+  height: 10px;
+}
+
+.fa-ellipsis::before {
+  font-size: 30px;
+}
+
+.fa-arrow-left::before {
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+.fa-plus::before {
+  font-size: 30px;
+}
+
+.executionCheck {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.executionCheck input {
+  height: 18px;
+  width: 18px;
+}
+
+dl {
+  background-color: white;
 }
 
 #todoList {
@@ -35,13 +78,9 @@ header {
 #todoList h1 {
   font-size: 29px;
   color: white;
-  margin: 45px 30px 22px 30px;
+  margin: 15px 30px 22px 30px;
 }
-/* .mainContainer {
-    background-color: white;
-    width: 300px;
-    height: 400px;
-  } */
+
 #todoList #content {
   background-color: white;
   position: relative;
@@ -49,6 +88,165 @@ header {
   height: 80vh;
   border-radius: 40px 40px 0 0;
   padding-top: 25px;
+}
+
+#todoList .todoItem {
+  display: flex;
+  position: relative;
+  color: black;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+.todoItem a {
+  width: 200px;
+}
+
+.todoItem:nth-child(2) {
+  justify-self: flex-end;
+}
+
+#todoList .todoItem button {
+  border: none;
+  background-color: transparent;
+  color: #616161;
+}
+
+#todoList .todolist {
+  padding: 0 38px;
+}
+
+#todoList .todolist a {
+  font-weight: bold;
+}
+
+#todoList input[type="checkbox"] + label {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../img/checkboxOff.png") no-repeat 0 0px / contain;
+  cursor: pointer;
+}
+
+#todoList input[type="checkbox"]:checked + label {
+  width: 24px;
+  height: 24px;
+  background: url("../img/checkboxOn.png") no-repeat 0 0px / contain;
+  cursor: pointer;
+}
+
+#todoList input[type="checkbox"] {
+  display: none;
+}
+
+#todoList .todoSubButtonList {
+  position: absolute;
+  right: -9.5px;
+  top: -27px;
+  border: white solid 0.2px;
+  padding: 1.5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #e6e6e6;
+}
+#todoList .todoSubButtonList li {
+  padding: 1px 0;
+}
+#todoList .todoSubButtonList li:first-child {
+  border-bottom: 1px solid #e6e6e6;
+  color: #383cc2;
+}
+#todoList .todoSubButtonList li:last-child {
+  color: #c23838;
+}
+#todoList #addButton {
+  height: 72px;
+  width: 72px;
+  background: #383cc2;
+  border-radius: 25%;
+  color: white;
+  border: none;
+  position: absolute;
+  bottom: 27px;
+  right: 23px;
+  cursor: pointer;
+}
+
+#update {
+  background-color: "white";
+}
+
+#update .wrapper {
+  padding: 30px;
+  background-color: white;
+  border-radius: 20px;
+  height: 590px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#update .form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#update .headerNode {
+  margin: 0 auto;
+}
+
+#update .h1 {
+  margin: 0px 0px;
+}
+
+#update .titleBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#update .detailBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#update .titleInput {
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+#update .detailInput {
+  height: 300px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  margin: 10px 0;
+}
+
+#update .addButton {
+  background-color: #383cc2;
+  color: white;
+  padding: 16px 0px;
+  font-size: 20px;
+  border-radius: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+#update .deleteButton {
+  background-color: #c23838;
+  color: white;
+  padding: 16px 0px;
+  font-size: 20px;
+  border-radius: 10px;
+  margin: 5px 0;
+  cursor: pointer;
 }
 
 #todoList .todoItem {
@@ -148,7 +346,7 @@ header {
 #update h1 {
   font-size: 29px;
   color: white;
-  padding: 45px 30px 12px 30px;
+  padding: 0 30px 12px 30px;
 }
 
 #update p {
@@ -159,15 +357,6 @@ header {
   background-color: white;
   height: 80vh;
   width: 390px;
-}
-
-#update .form {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-around;
-  gap: 25px;
-  padding: 30px;
 }
 
 #update .headerNode {
@@ -241,7 +430,7 @@ header {
 #regist h1 {
   font-size: 29px;
   color: white;
-  padding: 45px 30px 12px 30px;
+  padding: 10px 30px 12px 30px;
 }
 
 #regist p {
@@ -298,6 +487,7 @@ header {
   min-height: 85px;
   border-radius: 5px;
   border: 1px solid #d9d9d9;
+  height: 360px;
 }
 
 #regist .addButton {
@@ -307,6 +497,7 @@ header {
   font-size: 20px;
   border-radius: 10px;
   border: none;
+  cursor: pointer;
 }
 
 .topSection {
@@ -330,17 +521,30 @@ header {
 }
 
 #todoInfo h1 {
-  margin: 45px 36px 22px 36px;
+  margin: 20px 36px 22px 36px;
+  color: white;
+}
+
+#todoInfo dl {
+  background-color: white;
+  width: 390px;
+  height: 660px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#todoInfo p {
+  text-align: center;
 }
 
 #todoInfo {
   width: 390px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: 850px;
   align-items: center;
   margin: auto;
-  background-color: white;
+  background-color: #383cc2;
   border-radius: 20px;
 
   .todoListTitle {
@@ -375,6 +579,7 @@ header {
     margin: 32px 0 17px;
     color: white;
     font-size: large;
+    cursor: pointer;
   }
   .pageTitle {
     font-style: italic;

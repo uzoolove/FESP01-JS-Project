@@ -1,6 +1,7 @@
 // 할일 수정
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
+import Nav from "../../layout/nav.js";
 
 const TodoUpdate = async function ({
   _id,
@@ -58,6 +59,7 @@ const TodoUpdate = async function ({
 
   // 실행 여부
   const checkBox = document.createElement("div");
+  checkBox.className = "executionCheck";
   const check = document.createElement("label");
   const checkText = document.createTextNode("실행여부");
   const checkInput = document.createElement("input");
@@ -121,6 +123,7 @@ const TodoUpdate = async function ({
       });
   });
 
+  page.appendChild(Nav());
   page.appendChild(Header("TodoApp 수정"));
   page.appendChild(content);
   page.appendChild(Footer());

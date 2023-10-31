@@ -28,11 +28,35 @@ const TodoList = async function () {
       const checkbox = document.createElement("input");
       checkbox.setAttribute("id", `checkImage${item._id}`);
       checkbox.setAttribute("type", "checkbox");
-      checkbox.checked = item.done;
+      checkbox.checked = item.done; // 체크박스의 초기상태값 설정
 
       //체크박스 커스텀 라벨
       const checkImage = document.createElement("label");
       checkImage.setAttribute("for", `checkImage${item._id}`);
+
+      checkbox.addEventListener("click", async (event) => {
+        event.preventDefault();
+        console.log(event.target.checked);
+        const check = event.target.checked;
+
+        if (item.done === true) {
+          item.done = false;
+        } else {
+          item.done = true;
+        }
+
+        try {
+          const response = await axios.patch(
+            `http://localhost:33088/api/todolist/${item._id}`,
+            {
+              done: item.done,
+            }
+          );
+          // console.log(response.data.item.done);
+        } catch (err) {
+          console.error(err);
+        }
+      });
 
       //쩜쩜 버튼
       const todoSubButton = document.createElement("button");
@@ -46,6 +70,8 @@ const TodoList = async function () {
       const todoUpdate = document.createElement("li");
       const todoUpdateButton = document.createElement("button");
       const updateText = document.createTextNode("수정");
+      todoUpdateButton.className = "todoUpdateButton";
+
       // 수정버튼 클릭 함수
       todoUpdateButton.addEventListener("click", async () => {
         response = await axios(
@@ -65,17 +91,47 @@ const TodoList = async function () {
       const todoDelete = document.createElement("li");
       const todoDeleteButton = document.createElement("button");
       const deleteText = document.createTextNode("삭제");
+      todoDeleteButton.className = "todoDeleteButton";
+
       todoDelete.addEventListener("click", async function (event) {
         event.preventDefault();
         const id = item._id;
         response = await axios
           .delete(`http://localhost:33088/api/todolist/${id}`)
-          .then(function (response) {
-            console.log(response);
+          .then(function () {
+            // console.log(response);
+            li.remove();
           })
           .catch(function (err) {
             console.log(err);
           });
+      });
+
+      // 첫 렌더링시 done상태값에 따라 todolist의 글자색이 변경되는 조건문
+      if (item.done === true) {
+        todoInfoLink.style.color = "#C8C8C8";
+      } else {
+        todoInfoLink.style.color = "black";
+      }
+
+      // 체크박스 토글기능 이벤트
+      checkImage.addEventListener("click", function (e) {
+        if (checkbox.checked === true) {
+          checkbox.checked = false;
+        } else {
+          checkbox.checked = true;
+        }
+      });
+
+      // 투두리스트 글자색이 변경되는 이벤트
+      checkbox.addEventListener("click", function (e) {
+        const done = item.done;
+
+        if (!done) {
+          todoInfoLink.style.color = "black";
+        } else {
+          todoInfoLink.style.color = "#C8C8C8";
+        }
       });
 
       //쩜쩜 버튼 누르면 토글
@@ -90,19 +146,6 @@ const TodoList = async function () {
         }
       });
 
-      // 체크박스 토글기능;
-      checkbox.addEventListener("click", function (e) {
-        console.log(e.target.checked);
-        let checked = e.target.checked;
-        if (!checked) {
-          checked = true;
-          console.log(todoInfoLink.style.color);
-          todoInfoLink.style.color = "black";
-        } else {
-          checked = false;
-          todoInfoLink.style.color = "#C8C8C8";
-        }
-      });
       //쩜쩜 아이콘
       const ellipsis = document.createElement("i");
       ellipsis.setAttribute("class", "fa-solid fa-ellipsis");

@@ -2,21 +2,22 @@
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import TodoUpdate from "../update/TodoUpdate.js";
+import Nav from "../../layout/nav.js";
 
 const TodoInfo = async function ({ _id } = {}) {
   const page = document.createElement("div");
   page.setAttribute("id", "todoInfo");
   page.id = "todoInfo";
 
-  const topSection = document.createElement("div");
-  topSection.className = "topSection";
-  page.appendChild(topSection);
+  // const topSection = document.createElement("div");
+  // topSection.className = "topSection";
+  // page.appendChild(topSection);
 
   const previousButton = document.createElement("button");
   const previousIcon = document.createElement("i");
   previousButton.className = "prevButton";
   previousIcon.className = "fa-solid fa-angle-left fa-xl";
-  topSection.appendChild(previousButton);
+  // topSection.appendChild(previousButton);
   previousButton.appendChild(previousIcon);
 
   const content = document.createElement("dl");
@@ -75,8 +76,8 @@ const TodoInfo = async function ({ _id } = {}) {
     console.error("오류가 발생했습니다.");
   }
 
+  page.appendChild(Nav());
   page.appendChild(Header("TODO App 상세 조회"));
-
   page.appendChild(content);
   page.appendChild(Footer());
 
