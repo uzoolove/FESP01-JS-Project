@@ -1,10 +1,11 @@
 // 할일 등록
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
+import TodoUpdate from "../update/TodoUpdate.js";
 
 const TodoInfo = async function ({ _id } = {}) {
   const page = document.createElement("div");
-  page.setAttribute("id", "page");
+  page.setAttribute("id", "todoInfo");
   page.id = "todoInfo";
 
   const topSection = document.createElement("div");
@@ -24,7 +25,8 @@ const TodoInfo = async function ({ _id } = {}) {
 
   try {
     response = await axios(`http://localhost:33088/api/todolist/${_id}`);
-    console.log(response);
+
+    console.log("todoinfo", response.data.item);
 
     const title = document.createElement("dt");
     const titleText = document.createTextNode("제목");
@@ -59,6 +61,16 @@ const TodoInfo = async function ({ _id } = {}) {
 
     content.appendChild(modifyButton);
     modifyButton.appendChild(modifyButtonText);
+
+    modifyButton.addEventListener("click", async () => {
+      const updatePage = await TodoUpdate({
+        _id: response.data.item._id,
+        updateTitle: response.data.item.title,
+        updateContent: response.data.item.content,
+        done: response.data.item.done,
+      });
+      document.querySelector("#todoInfo").replaceWith(updatePage);
+    });
   } catch (error) {
     console.error("오류가 발생했습니다.");
   }
