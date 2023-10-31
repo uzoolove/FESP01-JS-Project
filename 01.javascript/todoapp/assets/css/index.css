@@ -201,24 +201,38 @@ header {
 
 #regist {
   background-color: "white";
+  width: 390px;
+  background-color: #383cc2;
+  border-radius: 20px;
+  margin: 0px auto;
 }
 
-#regist .wrapper {
-  padding: 30px;
+#regist #app {
+  height: 100%;
+}
+
+#regist h1 {
+  font-size: 29px;
+  color: white;
+  padding: 45px 30px 12px 30px;
+}
+
+#regist p {
+  text-align: center;
+  padding-bottom: 20px;
+}
+#regist #content {
   background-color: white;
-  border-radius: 20px;
-  height: 90vh;
-  width: 80%;
-  margin: 0px auto;
+  height: 80vh;
+  width: 390px;
 }
 
 #regist .form {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-around;
   gap: 25px;
-  height: 100%;
+  padding: 30px;
 }
 
 #regist .headerNode {
