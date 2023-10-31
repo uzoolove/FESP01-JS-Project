@@ -104,13 +104,10 @@ header {
 }
 #todoList .todoSubButtonList li {
   padding: 1px 0;
-  
 }
-#todoList .todoSubButtonList li button{
+#todoList .todoSubButtonList li button {
   cursor: pointer;
-  
 }
-
 
 #todoList .todoSubButtonList li button:hover {
   font-weight: bolder;
@@ -347,7 +344,7 @@ header {
   border-radius: 20px;
 
   .todoListTitle {
-    margin-top: 40px;
+    margin-top: 10px;
     width: 336px;
     margin-bottom: 10px;
   }
