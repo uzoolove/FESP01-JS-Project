@@ -1,5 +1,6 @@
 // TODO
-// - [ ] 목록 error 처리 null - list (강사님 헤ㄹ프…)
+// - [ ] 새로고침 시 변수에 저장된 정렬 데이터 초기화되는 문제
+// => localstorage에 저장
 // - [ ] 총 개수 표시 - list
 // - [ ] 반복 클릭 방지 - list
 // - [ ] 무한 스크롤 : 더보기 버튼 클릭 이벤트로 - list
@@ -62,6 +63,8 @@ const TodoList = async function () {
     }
 
     response = await axios('http://localhost:33088/api/todolist');
+    console.log(response);
+
     // if (!response.data?.items) {
     //   throw new Error('데이터가 없습니다.');
     // }
@@ -103,8 +106,16 @@ const TodoList = async function () {
       contentDone.innerHTML = '';
       contentNotDone.innerHTML = '';
 
+      let countNotDone = 0;
+      let countDone = 0;
+
       createSectionTitle('Done', contentDone);
       createSectionTitle('Todo', contentNotDone);
+
+      const countDoneElement = document.createElement('span');
+      const countNotDoneElement = document.createElement('span');
+      contentDone.appendChild(countDoneElement);
+      contentNotDone.appendChild(countNotDoneElement);
 
       createDropdown(contentDone);
       createDropdown(contentNotDone);
@@ -142,10 +153,15 @@ const TodoList = async function () {
 
         if (item.done) {
           contentDone.appendChild(li);
+          countDone++;
         } else {
           contentNotDone.appendChild(li);
+          countNotDone++;
         }
       });
+
+      countDoneElement.textContent = `완료된 할 일 ${countDone}개`;
+      countNotDoneElement.textContent = `해야할 할 일 ${countNotDone}개`;
     }
 
     //등록 버튼
