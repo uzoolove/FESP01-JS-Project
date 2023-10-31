@@ -19,6 +19,9 @@ const TodoUpdate = async () => {
   const page = document.createElement("div");
   page.setAttribute("id", "page");
 
+  const content = document.createElement("div");
+  content.setAttribute("id", "update-detail");
+
   // 제목
   const titleDiv = document.createElement("div");
   titleDiv.textContent = "할 일 :";
@@ -27,7 +30,7 @@ const TodoUpdate = async () => {
   titleInput.setAttribute("name", "title-create");
   titleInput.setAttribute("placeholder", "할 일을 입력하세요.");
   titleInput.setAttribute("value", item.title);
-  page.appendChild(titleDiv);
+  content.appendChild(titleDiv);
   titleDiv.appendChild(titleInput);
 
   // 상세 내용
@@ -38,7 +41,7 @@ const TodoUpdate = async () => {
   contentInput.setAttribute("name", "content-create");
   contentInput.setAttribute("placeholder", "상세 내용을 입력하세요.");
   contentInput.textContent = item.content;
-  page.appendChild(contentDiv);
+  content.appendChild(contentDiv);
   contentDiv.appendChild(contentInput);
 
   // 체크박스
@@ -48,7 +51,7 @@ const TodoUpdate = async () => {
   checkbox.setAttribute("name", "checkbox");
   checkbox.setAttribute("checked", false);
   checkbox.checked = item.done;
-  page.appendChild(checkbox);
+  content.appendChild(checkbox);
 
   // 수정 완료 버튼 - confirm
   const submit = document.createElement("input");
@@ -56,7 +59,7 @@ const TodoUpdate = async () => {
   submit.setAttribute("value", "수정 완료");
   submit.addEventListener("click", handleUpdate);
 
-  page.appendChild(submit);
+  content.appendChild(submit);
 
   function handleUpdate(e) {
     e.preventDefault();
@@ -96,9 +99,12 @@ const TodoUpdate = async () => {
   cancel.addEventListener("click", () => {
     window.history.back();
   });
-  page.appendChild(cancel);
+  content.appendChild(cancel);
 
   // 헤터, 푸터 추가
+  page.appendChild(Header("TODO App 수정"));
+  page.appendChild(content);
+  page.appendChild(Footer());
 
   return page;
 };
