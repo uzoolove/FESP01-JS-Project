@@ -2,19 +2,9 @@
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import { linkTo } from "../../Router.js";
+import handleDateForm from "../../../utils/handleDateForm.js";
 
-window.addEventListener("load", function () {
-  TodoInfo();
-});
-
-const doDateFormatting = (date) => {
-  const dateForm = new Date(date);
-  const year = dateForm.getFullYear();
-  const month = dateForm.getMonth() + 1;
-  const day = dateForm.getDate();
-  return `${year}/${month}/${day}`;
-};
-const TodoInfo = async function ({ _id } = {}) {
+const TodoInfo = async function () {
   //주소에서 id 가져오기
   const urlStr = window.location.href;
   const url = new URL(urlStr);
@@ -59,13 +49,13 @@ const TodoInfo = async function ({ _id } = {}) {
   //생성시간
   const infoCreateTime = document.createElement("p");
   infoCreateTime.id = "info-create-time";
-  infoCreateTime.textContent = `생성일 : ${doDateFormatting(item.createdAt)}`;
+  infoCreateTime.textContent = `생성일 : ${handleDateForm(item.createdAt)}`;
   infoContentsSection.appendChild(infoCreateTime);
 
   //수정시간
   const infoUpdateTime = document.createElement("p");
   infoUpdateTime.id = "info-update-time";
-  infoUpdateTime.textContent = `수정일 : ${doDateFormatting(item.updatedAt)}`;
+  infoUpdateTime.textContent = `수정일 : ${handleDateForm(item.updatedAt)}`;
   infoContentsSection.appendChild(infoUpdateTime);
 
   //완료여부(체크박스)
