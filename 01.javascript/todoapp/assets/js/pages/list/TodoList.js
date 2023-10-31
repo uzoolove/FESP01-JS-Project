@@ -70,6 +70,8 @@ const TodoList = async function () {
       const todoUpdate = document.createElement("li");
       const todoUpdateButton = document.createElement("button");
       const updateText = document.createTextNode("수정");
+      todoUpdateButton.className = "todoUpdateButton";
+
       // 수정버튼 클릭 함수
       todoUpdateButton.addEventListener("click", async () => {
         response = await axios(
@@ -89,6 +91,8 @@ const TodoList = async function () {
       const todoDelete = document.createElement("li");
       const todoDeleteButton = document.createElement("button");
       const deleteText = document.createTextNode("삭제");
+      todoDeleteButton.className = "todoDeleteButton";
+
       todoDelete.addEventListener("click", async function (event) {
         event.preventDefault();
         const id = item._id;

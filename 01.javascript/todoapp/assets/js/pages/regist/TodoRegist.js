@@ -1,7 +1,7 @@
 // 할일 등록
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
-import nav from "../../layout/nav.js";
+import Nav from "../../layout/nav.js";
 
 const TodoRegist = function () {
   const page = document.createElement("div");
@@ -72,7 +72,7 @@ const TodoRegist = function () {
       });
   });
 
-  page.appendChild(nav());
+  page.appendChild(Nav());
   page.appendChild(Header("TodoApp 등록"));
   page.appendChild(content);
   page.appendChild(Footer());
