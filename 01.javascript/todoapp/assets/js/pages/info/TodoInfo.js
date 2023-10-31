@@ -2,6 +2,7 @@
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import { linkTo } from "../../Router.js";
+import update from "../../apis/update.js";
 
 window.addEventListener("load", function () {
   TodoInfo();
@@ -61,6 +62,9 @@ const TodoInfo = async function ({ _id } = {}) {
   checkboxDetail.type = "checkbox";
   checkboxDetail.checked = item.done;
   content.appendChild(checkboxDetail);
+  checkboxDetail.addEventListener("click", () =>
+    update({ ...item, done: checkboxDetail.checked })
+  );
 
   //수정하기 버튼
   const btnModify = document.createElement("button");

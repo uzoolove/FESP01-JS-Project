@@ -76,7 +76,15 @@ const TodoUpdate = async () => {
     }
     if (confirm("할 일을 등록하시겠습니까?")) {
       // axios post
-      update(item._id, titleInput.value, contentInput.value, checkbox.checked);
+      update({
+        ...item,
+        title: titleInput.value,
+        content: contentInput.value,
+        done: checkbox.checked,
+      });
+
+      alert("수정이 등록되었습니다.");
+      window.location.replace("/");
     }
   }
 
