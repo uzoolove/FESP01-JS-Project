@@ -68,7 +68,7 @@ const TodoInfo = async function ({ _id } = {}) {
   content.appendChild(btnModify);
   btnModify.addEventListener("click", function (event) {
     event.preventDefault();
-    linkTo("update");
+    linkTo(`update?_id=${ID}`);
   });
 
   //삭제하기 버튼
