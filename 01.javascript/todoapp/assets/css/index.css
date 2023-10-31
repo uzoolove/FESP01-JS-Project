@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans+KR:wght@300;400;700&display=swap");
+
+* {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
 #content-done,
 #content-not-done {
   width: 500px;
