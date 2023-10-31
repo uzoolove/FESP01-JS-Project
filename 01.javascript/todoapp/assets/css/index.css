@@ -189,7 +189,7 @@ body {
   background-color: #383cc2;
   width: 393px;
   height: 80px;
-  border-radius: 20px 20px 0 0;
+  /* border-radius: 20px 20px 0 0; */
 }
 
 .prevButton {
@@ -209,6 +209,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: auto;
+  background-color: white;
 
   .todoListTitle {
     margin-top: 40px;
