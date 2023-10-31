@@ -7,6 +7,15 @@ header {
   width: 390px;
 }
 
+nav {
+  display: flex;
+}
+
+nav > i {
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
 .fa-arrow-left::before {
   font-size: 25px;
   color: white;
@@ -42,7 +51,7 @@ header {
 #todoList h1 {
   font-size: 29px;
   color: white;
-  margin: 45px 30px 22px 30px;
+  margin: 15px 30px 22px 30px;
 }
 
 #todoList #content {
@@ -211,11 +220,83 @@ header {
   border-radius: 10px;
 }
 
-#regist {
+#todoList .todoItem {
+  display: flex;
+  position: relative;
+  color: black;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+#todoList .todoItem button {
+  border: none;
+  background-color: transparent;
+  color: #616161;
+}
+
+#todoList .todolist {
+  padding: 0 38px;
+}
+
+#todoList .todolist a {
+  font-weight: bold;
+}
+
+#todoList input[type="checkbox"] + label {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../img/checkboxOff.png") no-repeat 0 0px / contain;
+  cursor: pointer;
+}
+
+#todoList input[type="checkbox"]:checked + label {
+  width: 24px;
+  height: 24px;
+  background: url("../img/checkboxOn.png") no-repeat 0 0px / contain;
+  cursor: pointer;
+}
+
+#todoList input[type="checkbox"] {
+  display: none;
+}
+
+#todoList .todoSubButtonList {
+  position: absolute;
+  right: -9.5px;
+  top: -27px;
+  border: white solid 0.2px;
+  padding: 1.5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #e6e6e6;
+}
+#todoList .todoSubButtonList li {
+  padding: 1px 0;
+}
+#todoList .todoSubButtonList li:first-child {
+  border-bottom: 1px solid #e6e6e6;
+  color: #383cc2;
+}
+#todoList .todoSubButtonList li:last-child {
+  color: #c23838;
+}
+#todoList #addButton {
+  height: 72px;
+  width: 72px;
+  background: #383cc2;
+  border-radius: 25%;
+  color: white;
+  border: none;
+  position: absolute;
+  bottom: 27px;
+  right: 23px;
+}
+
+#update {
   background-color: "white";
 }
 
-#regist .wrapper {
+#update .wrapper {
   padding: 30px;
   background-color: white;
   border-radius: 20px;
@@ -224,13 +305,103 @@ header {
   margin: 0px auto;
 }
 
-#regist .form {
+#update .form {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-around;
   gap: 25px;
   height: 100%;
+}
+
+#update .headerNode {
+  margin: 0 auto;
+}
+
+#update .h1 {
+  margin: 0px 0px;
+}
+
+#update .titleBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#update .detailBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#update .titleInput {
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+#update .detailInput {
+  height: 355px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+#update .addButton {
+  background-color: #383cc2;
+  color: white;
+  padding: 16px 0px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+#update .deleteButton {
+  background-color: #c23838;
+  color: white;
+  padding: 16px 0px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+#regist {
+  background-color: "white";
+  width: 390px;
+  background-color: #383cc2;
+  border-radius: 20px;
+  margin: 0px auto;
+}
+
+#regist #app {
+  height: 100%;
+}
+
+#regist h1 {
+  font-size: 29px;
+  color: white;
+  padding: 25px 30px 12px 30px;
+}
+
+#regist p {
+  text-align: center;
+  padding-bottom: 20px;
+}
+#regist #content {
+  background-color: white;
+  height: 80vh;
+  width: 390px;
+}
+
+#regist .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 25px;
+  padding: 30px;
 }
 
 #regist .headerNode {
