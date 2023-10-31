@@ -8,9 +8,15 @@
 // 할일 목록
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
-// import TodoRegist from "../regist/TodoRegist.js";
-// import TodoInfo from "../info/TodoInfo.js";
+
 import { linkTo } from "../../Router.js";
+
+//무한 스크롤
+// const btnScroll = document.createElement("div");
+// btnScroll.setAttribute("id", "btnScroll");
+// btnScroll.addEventListener("click", (e)=>{
+
+// })
 
 // 정렬 함수
 const sortItems = (items, key, order) => {
@@ -24,9 +30,11 @@ const sortItems = (items, key, order) => {
 };
 
 const TodoList = async function () {
-  // 전체 todo, done 수
   const page = document.createElement("div");
   page.setAttribute("id", "page");
+
+  const containerList = document.createElement("div");
+  containerList.setAttribute("id", "container-list");
 
   const contentDone = document.createElement("div");
   const contentNotDone = document.createElement("div");
@@ -35,14 +43,11 @@ const TodoList = async function () {
 
   let response;
 
-  // 체크박스 클릭 시 호출될 함수
-
   try {
     async function onCheckboxHandler(e) {
       const checkbox = e.target;
       const li = checkbox.parentElement;
       const id = li.id;
-      console.log(li);
 
       try {
         await axios.patch(`http://localhost:33088/api/todolist/${id}`, {
@@ -60,6 +65,19 @@ const TodoList = async function () {
       // } else {
       //   contentNotDone.appendChild(li);
       // }
+    }
+
+    async function updateTodoStatus(id, isDone) {
+      try {
+        await axios.patch(`http://localhost:33088/api/todolist/${id}`, {
+          done: isDone,
+        });
+
+        const response = await axios("http://localhost:33088/api/todolist");
+        makeTodolist(response.data.items);
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     response = await axios("http://localhost:33088/api/todolist");
@@ -102,25 +120,49 @@ const TodoList = async function () {
 
     makeTodolist(response.data.items);
 
-    function makeTodolist(i) {
+    // drop
+    async function drop(e, isDone) {
+      e.preventDefault();
+      const id = e.dataTransfer.getData("text/plain");
+      await updateTodoStatus(id, isDone);
+      const dragEl = document.getElementById(id);
+      if (dragEl) {
+        const checkbox = dragEl.querySelector("input[type='checkbox']");
+        if (checkbox) {
+          checkbox.checked = isDone;
+          await updateTodoStatus(id, isDone);
+        }
+        e.target.appendChild(dragEl);
+      }
+    }
+
+    // allow drop
+    function allowDrop(e) {
+      e.preventDefault();
+    }
+
+    // drag & drop event 추가
+    contentDone.ondragover = allowDrop;
+    contentDone.ondrop = (e) => drop(e, true);
+    contentNotDone.ondragover = allowDrop;
+    contentNotDone.ondrop = (e) => drop(e, false);
+
+    createDropdown(containerList);
+    function makeTodolist(items) {
       contentDone.innerHTML = "";
       contentNotDone.innerHTML = "";
+      createSectionTitle("Done", contentDone);
+      createSectionTitle("Todo", contentNotDone);
 
       let countNotDone = 0;
       let countDone = 0;
-
-      createSectionTitle("Done", contentDone);
-      createSectionTitle("Todo", contentNotDone);
 
       const countDoneElement = document.createElement("span");
       const countNotDoneElement = document.createElement("span");
       contentDone.appendChild(countDoneElement);
       contentNotDone.appendChild(countNotDoneElement);
 
-      createDropdown(contentDone);
-      createDropdown(contentNotDone);
-
-      sortItems(i).forEach(function (item) {
+      sortItems(items).forEach(function (item) {
         const title = document.createTextNode(item.title);
 
         const li = document.createElement("div");
@@ -178,32 +220,8 @@ const TodoList = async function () {
     page.appendChild(error);
   }
 
-  // allow drop
-  function allowDrop(e) {
-    e.preventDefault();
-  }
-
-  // drop
-  function drop(e, isDone) {
-    e.preventDefault();
-    const id = e.dataTransfer.getData("text/plain");
-    const dragEl = document.getElementById(id);
-    if (dragEl) {
-      const checkbox = dragEl.querySelector("input[type='checkbox']");
-      if (checkbox) {
-        checkbox.checked = isDone;
-      }
-    }
-    e.target.appendChild(dragEl);
-  }
-
-  // drag & drop event 추가
-  contentDone.ondragover = allowDrop;
-  contentDone.ondrop = (e) => drop(e, true);
-  contentNotDone.ondragover = allowDrop;
-  contentNotDone.ondrop = (e) => drop(e, false);
-
   page.appendChild(Header("TODO App 목록 조회"));
+  page.appendChild(containerList);
   page.appendChild(contentDone);
   page.appendChild(contentNotDone);
   page.appendChild(Footer());
