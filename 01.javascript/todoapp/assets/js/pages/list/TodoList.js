@@ -2,6 +2,7 @@ import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import TodoRegist from "../regist/TodoRegist.js";
 import TodoInfo from "../info/TodoInfo.js";
+import TodoUpdate from "../update/TodoUpdate.js";
 
 const TodoList = async function () {
   const page = document.createElement("div");
@@ -21,7 +22,6 @@ const TodoList = async function () {
     response.data?.items.forEach((item) => {
       const li = document.createElement("li");
       li.classList.add("todoItem");
-
       const todoInfoLink = document.createElement("a");
       todoInfoLink.setAttribute("href", `info?_id=${item._id}`);
       const title = document.createTextNode(item.title);
@@ -70,6 +70,20 @@ const TodoList = async function () {
       const todoUpdate = document.createElement("li");
       const todoUpdateButton = document.createElement("button");
       const updateText = document.createTextNode("수정");
+      // 수정버튼 클릭 함수
+      todoUpdateButton.addEventListener("click", async () => {
+        response = await axios(
+          `http://localhost:33088/api/todolist/${item._id}`
+        );
+        let { content, _id, title, done } = { ...response.data.item };
+        const updatePage = await TodoUpdate({
+          _id: _id,
+          updateTitle: title,
+          updateContent: content,
+          done: done,
+        });
+        document.querySelector("#todoList").replaceWith(updatePage);
+      });
 
       // 삭제 버튼
       const todoDelete = document.createElement("li");

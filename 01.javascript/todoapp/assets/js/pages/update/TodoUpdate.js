@@ -1,4 +1,7 @@
 // 할일 수정
+import Header from "../../layout/Header.js";
+import Footer from "../../layout/Footer.js";
+
 const TodoUpdate = async function ({
   _id,
   updateTitle,
@@ -6,10 +9,10 @@ const TodoUpdate = async function ({
   done = false,
 }) {
   const page = document.createElement("div");
-  page.setAttribute("id", "todoUpdate");
+  page.setAttribute("id", "update");
 
   const content = document.createElement("div");
-  content.id = "update";
+  content.id = "content";
 
   const wrapper = document.createElement("div");
   wrapper.className = "wrapper";
@@ -18,16 +21,6 @@ const TodoUpdate = async function ({
   const form = document.createElement("form");
   form.className = "form";
   wrapper.appendChild(form);
-
-  //todoApp 등록
-  const headerNode = document.createElement("div");
-  headerNode.className = "headerNode";
-  const h1 = document.createElement("h1");
-  h1.className = "h1";
-  const headerTitle = document.createTextNode("TodoApp 수정");
-  h1.appendChild(headerTitle);
-  headerNode.appendChild(h1);
-  form.appendChild(headerNode);
 
   //제목 입력창
   const titleBox = document.createElement("div");
@@ -128,7 +121,10 @@ const TodoUpdate = async function ({
       });
   });
 
+  page.appendChild(Header("TodoApp 수정"));
   page.appendChild(content);
+  page.appendChild(Footer());
+
   return page;
 };
 export default TodoUpdate;
