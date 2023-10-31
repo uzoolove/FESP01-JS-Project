@@ -67,6 +67,7 @@ const TodoRegist = function () {
       .post("http://localhost:33088/api/todolist", {
         title: titleInput.value,
         content: detailInput.value,
+        done: false,
       })
       .then(function (response) {
         console.log(response);

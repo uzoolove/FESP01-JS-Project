@@ -1,9 +1,22 @@
 body {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   height: 100vh;
-  /* background-color: #e8e8e8; */
+  background-color: #e8e8e8;
   font-family: "Noto Sans KR", sans-serif;
+}
+header {
+  width: 390px;
+}
+
+#todoList {
+  width: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #383cc2;
+  border-radius: 20px;
 }
 
 #todoList #app {
@@ -19,103 +32,171 @@ body {
   color: black;
 }
 
-@media screen and (max-width: 769px) {
-  /* 대형 스마트폰 또는 태블릿에 대한 스타일을 여기에 추가하세요 */
-
-  body {
-    background-color: #383cc2;
-  }
-
-  #todoList h1 {
-    font-size: 29px;
-    color: white;
-    margin: 45px 30px 22px 30px;
-  }
-  /* .mainContainer {
+#todoList h1 {
+  font-size: 29px;
+  color: white;
+  margin: 45px 30px 22px 30px;
+}
+/* .mainContainer {
     background-color: white;
     width: 300px;
     height: 400px;
   } */
-  #todoList #content {
-    background-color: white;
-    position: relative;
-    width: 390px;
-    height: 80vh;
-    border-radius: 40px 40px 0 0;
-    padding-top: 25px;
-  }
+#todoList #content {
+  background-color: white;
+  position: relative;
+  width: 390px;
+  height: 80vh;
+  border-radius: 40px 40px 0 0;
+  padding-top: 25px;
+}
 
-  #todoList .todoItem {
-    display: flex;
-    position: relative;
-    color: black;
-    justify-content: space-between;
-    padding: 16px 0;
-  }
+#todoList .todoItem {
+  display: flex;
+  position: relative;
+  color: black;
+  justify-content: space-between;
+  padding: 16px 0;
+}
 
-  #todoList .todoItem button {
-    border: none;
-    background-color: transparent;
-    color: #616161;
-  }
+#todoList .todoItem button {
+  border: none;
+  background-color: transparent;
+  color: #616161;
+}
 
-  #todoList .todolist {
-    padding: 0 38px;
-  }
+#todoList .todolist {
+  padding: 0 38px;
+}
 
-  #todoList .todolist a {
-    font-weight: bold;
-  }
+#todoList .todolist a {
+  font-weight: bold;
+}
 
-  #todoList input[type="checkbox"] + label {
-    display: block;
-    width: 24px;
-    height: 24px;
-    background: url("../img/checkboxOff.png") no-repeat 0 0px / contain;
-    cursor: pointer;
-  }
+#todoList input[type="checkbox"] + label {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../img/checkboxOff.png") no-repeat 0 0px / contain;
+  cursor: pointer;
+}
 
-  #todoList input[type="checkbox"]:checked + label {
-    width: 24px;
-    height: 24px;
-    background: url("../img/checkboxOn.png") no-repeat 0 0px / contain;
-    cursor: pointer;
-  }
+#todoList input[type="checkbox"]:checked + label {
+  width: 24px;
+  height: 24px;
+  background: url("../img/checkboxOn.png") no-repeat 0 0px / contain;
+  cursor: pointer;
+}
 
-  #todoList input[type="checkbox"] {
-    display: none;
-  }
+#todoList input[type="checkbox"] {
+  display: none;
+}
 
-  #todoList .todoSubButtonList {
-    position: absolute;
-    right: -9.5px;
-    top: -27px;
-    border: white solid 0.2px;
-    padding: 1.5px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 2px 2px #e6e6e6;
-  }
-  #todoList .todoSubButtonList li {
-    padding: 1px 0;
-  }
-  #todoList .todoSubButtonList li:first-child {
-    border-bottom: 1px solid #e6e6e6;
-    color: #383cc2;
-  }
-  #todoList .todoSubButtonList li:last-child {
-    color: #c23838;
-  }
-  #todoList #addButton {
-    height: 72px;
-    width: 72px;
-    background: #383cc2;
-    border-radius: 25%;
-    color: white;
-    border: none;
-    position: absolute;
-    bottom: 27px;
-    right: 23px;
-  }
+#todoList .todoSubButtonList {
+  position: absolute;
+  right: -9.5px;
+  top: -27px;
+  border: white solid 0.2px;
+  padding: 1.5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #e6e6e6;
+}
+#todoList .todoSubButtonList li {
+  padding: 1px 0;
+}
+#todoList .todoSubButtonList li:first-child {
+  border-bottom: 1px solid #e6e6e6;
+  color: #383cc2;
+}
+#todoList .todoSubButtonList li:last-child {
+  color: #c23838;
+}
+#todoList #addButton {
+  height: 72px;
+  width: 72px;
+  background: #383cc2;
+  border-radius: 25%;
+  color: white;
+  border: none;
+  position: absolute;
+  bottom: 27px;
+  right: 23px;
+}
+
+#update {
+  background-color: "white";
+}
+
+#update .wrapper {
+  padding: 30px;
+  background-color: white;
+  border-radius: 20px;
+  height: 90vh;
+  width: 80%;
+  margin: 0px auto;
+}
+
+#update .form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 25px;
+  height: 100%;
+}
+
+#update .headerNode {
+  margin: 0 auto;
+}
+
+#update .h1 {
+  margin: 0px 0px;
+}
+
+#update .titleBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#update .detailBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#update .titleInput {
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+#update .detailInput {
+  height: 355px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+#update .addButton {
+  background-color: #383cc2;
+  color: white;
+  padding: 16px 0px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+#update .deleteButton {
+  background-color: #c23838;
+  color: white;
+  padding: 16px 0px;
+  font-size: 20px;
+  border-radius: 10px;
 }
 
 #regist {
@@ -185,6 +266,7 @@ body {
   font-size: 20px;
   border-radius: 10px;
 }
+
 .topSection {
   background-color: #383cc2;
   width: 393px;
