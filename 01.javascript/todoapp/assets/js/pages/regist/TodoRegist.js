@@ -5,6 +5,7 @@ import Footer from "../../layout/Footer.js";
 const TodoRegist = function () {
   const page = document.createElement("div");
   page.setAttribute("id", "page");
+  page.setAttribute("class", "regist");
 
   const handleRegist = (e) => {
     e.preventDefault();
@@ -41,18 +42,22 @@ const TodoRegist = function () {
   const formCreate = document.createElement("form");
   //할일 제목
   const titleDiv = document.createElement("div");
+  titleDiv.setAttribute("class", "title");
   const titleLabel = document.createTextNode("할일");
   const titleInput = document.createElement("input");
   titleInput.setAttribute("id", "title-create");
   titleInput.setAttribute("name", "title-create");
+  titleInput.setAttribute("class", "title-create");
   titleInput.setAttribute("placeholder", "할 일을 입력하세요.");
   titleDiv.appendChild(titleLabel);
   //상세내용
   const contentDiv = document.createElement("div");
+  contentDiv.setAttribute("class", "content");
   const contentLabel = document.createTextNode("상세내용");
   const contentInput = document.createElement("textarea");
   contentInput.setAttribute("id", "content-create");
   contentInput.setAttribute("name", "content-create");
+  contentInput.setAttribute("class", "content-create");
   contentInput.setAttribute("placeholder", "상세 내용을 입력하세요.");
   contentDiv.appendChild(contentLabel);
   // 버튼 활성 비활성화 조건
@@ -81,12 +86,14 @@ const TodoRegist = function () {
 
   // 취소하기 버튼: 뒤로가기 이벤트
   const cancel = document.createElement("button");
+  cancel.setAttribute('class','cancel')
   cancel.innerText = "취소";
   cancel.addEventListener("click", () => {
     window.history.back();
   });
 
   page.appendChild(Header("TODO List"));
+  formCreate.setAttribute('class','form')
   formCreate.appendChild(titleDiv);
   formCreate.appendChild(titleInput);
   formCreate.appendChild(contentDiv);
