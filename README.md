@@ -13,15 +13,14 @@
 
 ## 서버 구동
 * 프로젝트 루트에서 실행
-<!-- * -s 옵션: 라우터를 추가할 경우 클라이언트가 요청한 모든 URL에 대해서 index.html을 응답하도록 설정 -->
 ```
 cd 01.javascript/todoapp
 npx serve .
 ```
-<!-- * -s 옵션: 라우터를 추가할 경우 클라이언트가 요청한 모든 URL에 대해서 index.html을 응답하도록 설정
+* -s 옵션: 라우터를 추가할 경우 클라이언트가 요청한 모든 URL에 대해서 index.html을 응답하도록 설정
 ```
-cd 01.javascript
+cd 01.javascript/todoapp-router
 npx serve -s .
-``` -->
+```
 * http://localhost:3000 접속
   - 이미 3000 포트가 사용중일 경우 콘솔 안내 메세지에 따라서 접속
