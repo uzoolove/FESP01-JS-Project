@@ -1,6 +1,7 @@
 // 할일 등록
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
+import { linkTo } from "../../Router.js";
 
 const TodoRegist = function () {
   const page = document.createElement("div");
@@ -82,8 +83,9 @@ const TodoRegist = function () {
   // 취소하기 버튼: 뒤로가기 이벤트
   const cancel = document.createElement("button");
   cancel.innerText = "취소";
-  cancel.addEventListener("click", () => {
-    window.history.back();
+  cancel.addEventListener("click", (e) => {
+    e.preventDefault();
+    linkTo("/");
   });
 
   page.appendChild(Header("TODO List"));
