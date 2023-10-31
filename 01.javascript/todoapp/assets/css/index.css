@@ -99,11 +99,24 @@ header {
   border: white solid 0.2px;
   padding: 1.5px;
   border-radius: 10px;
+  background: white;
   box-shadow: 2px 2px 2px 2px #e6e6e6;
 }
 #todoList .todoSubButtonList li {
   padding: 1px 0;
+  
 }
+#todoList .todoSubButtonList li button{
+  cursor: pointer;
+  
+}
+
+
+#todoList .todoSubButtonList li button:hover {
+  font-weight: bolder;
+  color: #383cc2;
+}
+
 #todoList .todoSubButtonList li:first-child {
   border-bottom: 1px solid #e6e6e6;
   color: #383cc2;
