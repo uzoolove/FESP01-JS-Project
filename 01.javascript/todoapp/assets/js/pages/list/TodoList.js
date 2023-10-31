@@ -70,6 +70,7 @@ const TodoList = async function () {
       const todoUpdate = document.createElement("li");
       const todoUpdateButton = document.createElement("button");
       const updateText = document.createTextNode("수정");
+
       // 삭제 버튼
       const todoDelete = document.createElement("li");
       const todoDeleteButton = document.createElement("button");
@@ -79,8 +80,9 @@ const TodoList = async function () {
         const id = item._id;
         response = await axios
           .delete(`http://localhost:33088/api/todolist/${id}`)
-          .then(function (response) {
-            console.log(response);
+          .then(function () {
+            // console.log(response);
+            li.remove();
           })
           .catch(function (err) {
             console.log(err);

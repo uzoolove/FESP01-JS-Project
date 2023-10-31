@@ -13,10 +13,15 @@ const TodoInfo = async function ({ _id } = {}) {
   page.appendChild(topSection);
 
   const previousButton = document.createElement("button");
-  const previousText = document.createTextNode("<");
-  // previousButton.innerHTML = '<i class="fa-solid fa-angle-left"></i>';
+  const arrowBack = document.createElement("i");
+  arrowBack.className = "fa-solid fa-arrow-left";
+  previousButton.addEventListener("click", () => {
+    window.history.back();
+  });
+
+  previousButton.appendChild(arrowBack);
   topSection.appendChild(previousButton);
-  previousButton.appendChild(previousText);
+
   previousButton.className = "prevButton";
 
   const content = document.createElement("dl");
