@@ -4,7 +4,7 @@ import Footer from "../../layout/Footer.js";
 import { linkTo } from "../../Router.js";
 import handleDateForm from "../../../utils/handleDateForm.js";
 import getId from "../../../utils/getId.js";
-import useSelectTodoInfo from "../../../axios/useSselectTodoInfo.js";
+import useSelectTodoInfo from "../../../axios/useSelectTodoInfo.js";
 
 const TodoInfo = async function () {
   //주소에서 id 가져오기
