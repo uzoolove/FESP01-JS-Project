@@ -99,11 +99,24 @@ header {
   border: white solid 0.2px;
   padding: 1.5px;
   border-radius: 10px;
+  background: white;
   box-shadow: 2px 2px 2px 2px #e6e6e6;
 }
 #todoList .todoSubButtonList li {
   padding: 1px 0;
+  
 }
+#todoList .todoSubButtonList li button{
+  cursor: pointer;
+  
+}
+
+
+#todoList .todoSubButtonList li button:hover {
+  font-weight: bolder;
+  color: #383cc2;
+}
+
 #todoList .todoSubButtonList li:first-child {
   border-bottom: 1px solid #e6e6e6;
   color: #383cc2;
@@ -201,24 +214,38 @@ header {
 
 #regist {
   background-color: "white";
+  width: 390px;
+  background-color: #383cc2;
+  border-radius: 20px;
+  margin: 0px auto;
 }
 
-#regist .wrapper {
-  padding: 30px;
+#regist #app {
+  height: 100%;
+}
+
+#regist h1 {
+  font-size: 29px;
+  color: white;
+  padding: 45px 30px 12px 30px;
+}
+
+#regist p {
+  text-align: center;
+  padding-bottom: 20px;
+}
+#regist #content {
   background-color: white;
-  border-radius: 20px;
-  height: 90vh;
-  width: 80%;
-  margin: 0px auto;
+  height: 80vh;
+  width: 390px;
 }
 
 #regist .form {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-around;
   gap: 25px;
-  height: 100%;
+  padding: 30px;
 }
 
 #regist .headerNode {

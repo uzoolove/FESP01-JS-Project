@@ -1,27 +1,21 @@
 // 할일 등록
+import Header from "../../layout/Header.js";
+import Footer from "../../layout/Footer.js";
+
 const TodoRegist = function () {
   const page = document.createElement("div");
-  page.setAttribute("id", "page");
+  page.setAttribute("id", "regist");
 
   const content = document.createElement("div");
-  content.id = "regist";
+  content.id = "content";
+
   const wrapper = document.createElement("div");
   wrapper.className = "wrapper";
   content.appendChild(wrapper);
 
   const form = document.createElement("form");
   form.className = "form";
-  wrapper.appendChild(form);
-
-  //todoApp 등록
-  const headerNode = document.createElement("div");
-  headerNode.className = "headerNode";
-  const h1 = document.createElement("h1");
-  h1.className = "h1";
-  const headerTitle = document.createTextNode("TodoApp 등록");
-  h1.appendChild(headerTitle);
-  headerNode.appendChild(h1);
-  form.appendChild(headerNode);
+  content.appendChild(form);
 
   //제목 입력창
   const titleBox = document.createElement("div");
@@ -77,7 +71,9 @@ const TodoRegist = function () {
       });
   });
 
+  page.appendChild(Header("TodoApp 등록"));
   page.appendChild(content);
+  page.appendChild(Footer());
 
   return page;
 };
