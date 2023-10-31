@@ -1,10 +1,5 @@
 // TODO
 // - [ ] 목록 error 처리 null - list (강사님 헤ㄹ프…)
-// - [ ] 정렬 - list
-// - 드랍다운 버튼으로 정렬 기준 선택(default: 생성날짜 오래된순 위에서부터)
-// - 생성날짜 기준 최신, 오래된 순
-// - 제목 기준 오름차순, 내림차순 a-z
-// - 수정날짜 기준 최신, 오래된 순
 // - [ ] 총 개수 표시 - list
 // - [ ] 반복 클릭 방지 - list
 // - [ ] 무한 스크롤 : 더보기 버튼 클릭 이벤트로 - list
@@ -40,53 +35,59 @@ const TodoList = async function () {
   let response;
 
   // 체크박스 클릭 시 호출될 함수
-  function onCheckboxHandler(e) {
-    const checkbox = e.target;
-    const li = checkbox.parentElement;
-
-    if (checkbox.checked) {
-      contentDone.appendChild(li);
-    } else {
-      contentNotDone.appendChild(li);
-    }
-  }
 
   try {
+    async function onCheckboxHandler(e) {
+      const checkbox = e.target;
+      const li = checkbox.parentElement;
+      const id = li.id;
+      console.log(li);
+
+      try {
+        await axios.patch(`http://localhost:33088/api/todolist/${id}`, {
+          done: checkbox.checked,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+
+      response = await axios('http://localhost:33088/api/todolist');
+      makeTodolist(response.data.items);
+
+      // if (checkbox.checked) {
+      //   contentDone.appendChild(li);
+      // } else {
+      //   contentNotDone.appendChild(li);
+      // }
+    }
+
     response = await axios('http://localhost:33088/api/todolist');
     // if (!response.data?.items) {
     //   throw new Error('데이터가 없습니다.');
     // }
 
-    // 정렬 드랍다운 select
+    let currentDropdown = 'createdAt_asc';
+
     function createDropdown(parentElement) {
       const sortDropdown = document.createElement('select');
-      // sortDropdown.option.add(new Option('생성날짜 최신순', 'createdAt_asc'));
-      // sortDropdown.option.add(
-      //   new Option('생성날짜 오래된순', 'createdAt_desc')
-      // );
+
       const option1 = new Option('생성날짜 오래된순', 'createdAt_desc');
       const option2 = new Option('생성날짜 최신순', 'createdAt_asc');
 
       sortDropdown.appendChild(option1);
       sortDropdown.appendChild(option2);
 
+      sortDropdown.value = currentDropdown;
+
       sortDropdown.addEventListener('change', (e) => {
+        currentDropdown = e.target.value;
         const [key, order] = e.target.value.split('_');
-        const sortTodo = sortItems(response.data.items, key, order);
-        // UI 만들기
-        makeTodolist(sortTodo);
+        makeTodolist(response.data.items);
       });
+
       parentElement.appendChild(sortDropdown);
     }
 
-    //section title 및 TODO: 각 카테고리의 갯수
-    // const doneTitle = document.createElement('h3');
-    // doneTitle.textContent = 'Done';
-    // contentDone.appendChild(doneTitle);
-
-    // const notDoneTitle = document.createElement('h3');
-    // notDoneTitle.textContent = 'Todo';
-    // contentNotDone.appendChild(notDoneTitle);
     function createSectionTitle(title, parentElement) {
       const h3Element = document.createElement('h3');
       h3Element.textContent = title;
@@ -108,12 +109,10 @@ const TodoList = async function () {
       createDropdown(contentDone);
       createDropdown(contentNotDone);
 
-      i.forEach(function (item) {
+      sortItems(i).forEach(function (item) {
         const title = document.createTextNode(item.title);
 
-        //todo item
         const li = document.createElement('div');
-        // drag 속성
         li.draggable = true;
         li.id = item._id;
         li.ondragstart = (e) => {
@@ -126,10 +125,7 @@ const TodoList = async function () {
         todoInfoLink.setAttribute('href', `info?_id=${item._id}`);
         todoInfoLink.appendChild(title);
         todoInfoLink.addEventListener('click', function (event) {
-          // 브라우저의 기본 동작 취소(<a> 태그 동작 안하도록)
           event.preventDefault();
-          // const infoPage = await TodoInfo({ _id: item._id });
-          // document.querySelector("#page").replaceWith(infoPage);
           linkTo(todoInfoLink.getAttribute('href'));
         });
 
@@ -144,7 +140,6 @@ const TodoList = async function () {
         li.appendChild(todoInfoLink);
         checkbox.addEventListener('click', onCheckboxHandler);
 
-        //todo item done 값에 따른 위치 분류
         if (item.done) {
           contentDone.appendChild(li);
         } else {
@@ -160,9 +155,6 @@ const TodoList = async function () {
     page.appendChild(btnRegist);
 
     btnRegist.addEventListener('click', () => {
-      // const registPage = TodoRegist();
-      // //id로 주소 이동 필요
-      // document.querySelector("#page").replaceWith(registPage);
       linkTo('regist');
     });
   } catch (err) {
@@ -180,10 +172,8 @@ const TodoList = async function () {
     e.preventDefault();
     const id = e.dataTransfer.getData('text/plain');
     const dragEl = document.getElementById(id);
-    // 체크박스 찾기
     if (dragEl) {
       const checkbox = dragEl.querySelector("input[type='checkbox']");
-      // 체크박스 check 상태 업데이트
       if (checkbox) {
         checkbox.checked = isDone;
       }
