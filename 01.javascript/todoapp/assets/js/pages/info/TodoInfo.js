@@ -12,20 +12,20 @@ const TodoInfo = async function () {
   const data = await useSelectTodoInfo(ID);
   const item = data.item;
 
+  //page
   const page = document.createElement("div");
   page.setAttribute("id", "page");
   page.className = "info";
 
   //본문
-  const content = document.createElement("div");
-  content.id = "info-detail";
+  const main = document.createElement("main");
 
   const infoContentsSection = document.createElement("section");
   const infoButtonsSection = document.createElement("section");
   infoContentsSection.id = "info-contents-section";
   infoButtonsSection.id = "info-buttons-section";
-  content.appendChild(infoContentsSection);
-  content.appendChild(infoButtonsSection);
+  main.appendChild(infoContentsSection);
+  main.appendChild(infoButtonsSection);
 
   //할 일 제목
   const infoTitle = document.createElement("h3");
@@ -104,7 +104,7 @@ const TodoInfo = async function () {
   infoButtonsSection.appendChild(btnGoHome);
 
   page.appendChild(Header("TODO App 상세 조회"));
-  page.appendChild(content);
+  page.appendChild(main);
   page.appendChild(Footer());
 
   return page;

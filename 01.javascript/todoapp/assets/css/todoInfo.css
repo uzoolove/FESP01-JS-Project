@@ -15,7 +15,7 @@ div.info:has(div#app) {
   font-size: x-large;
 }
 
-.info #info-detail {
+.info main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -31,7 +31,7 @@ div.info:has(div#app) {
   grid-row-gap: 20px;
 }
 
-.info #info-detail #checkbox {
+.info main #checkbox {
   position: absolute;
   right: 10px;
   top: 15px;
@@ -115,12 +115,12 @@ div.info:has(div#app) {
 }
 
 @media (max-width: 800px) {
-  .info #info-detail {
+  .info main {
     width: 50vw;
   }
 }
 @media (min-width: 1080px) {
-  .info #info-detail {
+  .info main {
     width: 30vw;
   }
 }
