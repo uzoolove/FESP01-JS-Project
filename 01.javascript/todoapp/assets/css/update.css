@@ -42,6 +42,7 @@
     .cancel {
       margin-left: 0.5rem;
     }
+
     .checkbox {
       position: absolute;
       top: 1rem;
@@ -58,6 +59,13 @@ input[type="submit"] {
   border: 1px solid #cfcfcf;
   border-radius: 0.2rem;
   padding: 0.5rem;
+}
+
+button:hover,
+input[type="submit"]:hover:not(:disabled),
+input[type="checkbox"]:hover:not(:disabled) {
+  background-color: lightgray;
+  cursor: pointer;
 }
 
 header {

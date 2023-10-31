@@ -115,7 +115,8 @@ const TodoUpdate = async () => {
   const cancel = document.createElement("button");
   cancel.innerText = "취소";
   cancel.setAttribute("class", "cancel");
-  cancel.addEventListener("click", () => {
+  cancel.addEventListener("click", (e) => {
+    e.preventDefault();
     window.history.back();
   });
   formUpdate.appendChild(cancel);
