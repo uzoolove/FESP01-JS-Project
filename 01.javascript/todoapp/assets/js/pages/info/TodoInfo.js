@@ -27,45 +27,59 @@ const TodoInfo = async function ({ _id } = {}) {
 
   const page = document.createElement("div");
   page.setAttribute("id", "page");
+  page.className = "info";
 
   //본문
   const content = document.createElement("div");
   content.id = "info-detail";
-  const text = document.createTextNode(`_id=${_id} 상세 조회 화면`);
-  const btnTitle = document.createTextNode("수정하기");
-  content.appendChild(text);
 
-  //제목
+  const infoContentsSection = document.createElement("section");
+  const infoButtonsSection = document.createElement("section");
+  infoContentsSection.id = "info-contents-section";
+  infoButtonsSection.id = "info-buttons-section";
+  content.appendChild(infoContentsSection);
+  content.appendChild(infoButtonsSection);
+
+  //할 일 제목
   const infoTitle = document.createElement("h3");
+  infoTitle.id = "info-todo-title";
   infoTitle.textContent = `할 일 : ${item.title}`;
-  content.appendChild(infoTitle);
+  infoContentsSection.appendChild(infoTitle);
 
   //상세 내용
+  const infoContentTitle = document.createElement("label");
+  infoContentTitle.for = "info-todo-content";
+  infoContentTitle.textContent = "상세 내용";
   const infoContent = document.createElement("p");
-  infoContent.textContent = `상세 내용 : ${item.content}`;
-  content.appendChild(infoContent);
+  infoContent.id = "info-todo-content";
+  infoContent.textContent = item.content;
+  infoContentsSection.appendChild(infoContentTitle);
+  infoContentsSection.appendChild(infoContent);
 
   //생성시간
   const infoCreateTime = document.createElement("p");
+  infoCreateTime.id = "info-create-time";
   infoCreateTime.textContent = `생성일 : ${doDateFormatting(item.createdAt)}`;
-  content.appendChild(infoCreateTime);
+  infoContentsSection.appendChild(infoCreateTime);
 
   //수정시간
-  const infoUpdate = document.createElement("p");
-  infoUpdate.textContent = `수정일 : ${doDateFormatting(item.updatedAt)}`;
-  content.appendChild(infoUpdate);
+  const infoUpdateTime = document.createElement("p");
+  infoUpdateTime.id = "info-update-time";
+  infoUpdateTime.textContent = `수정일 : ${doDateFormatting(item.updatedAt)}`;
+  infoContentsSection.appendChild(infoUpdateTime);
 
   //완료여부(체크박스)
   const checkboxDetail = document.createElement("input");
   checkboxDetail.setAttribute("id", "checkbox");
   checkboxDetail.type = "checkbox";
   checkboxDetail.checked = item.done;
-  content.appendChild(checkboxDetail);
+  infoContentsSection.appendChild(checkboxDetail);
 
   //수정하기 버튼
   const btnModify = document.createElement("button");
   btnModify.textContent = "수정";
-  content.appendChild(btnModify);
+  btnModify.id = "info-btn-modify";
+  infoButtonsSection.appendChild(btnModify);
   btnModify.addEventListener("click", function (event) {
     event.preventDefault();
     linkTo("update");
@@ -74,7 +88,8 @@ const TodoInfo = async function ({ _id } = {}) {
   //삭제하기 버튼
   const btnDelete = document.createElement("button");
   btnDelete.textContent = "삭제";
-  content.appendChild(btnDelete);
+  btnDelete.id = "info-btn-delete";
+  infoButtonsSection.appendChild(btnDelete);
   btnDelete.addEventListener("click", function (event) {
     event.preventDefault();
     if (confirm("삭제하시겠습니까?")) {
@@ -95,14 +110,14 @@ const TodoInfo = async function ({ _id } = {}) {
   //홈 버튼
   const btnGoHome = document.createElement("button");
   btnGoHome.textContent = "홈으로 이동";
+  btnGoHome.id = "info-btn-home";
   btnGoHome.onclick = () => {
     linkTo("/");
   };
-  content.appendChild(btnGoHome);
+  infoButtonsSection.appendChild(btnGoHome);
 
   page.appendChild(Header("TODO App 상세 조회"));
   page.appendChild(content);
-
   page.appendChild(Footer());
 
   return page;
