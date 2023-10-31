@@ -70,3 +70,64 @@ body {
   font-size: 20px;
   border-radius: 10px;
 }
+.topSection {
+  background-color: #383cc2;
+  width: 393px;
+  height: 80px;
+  border-radius: 20px 20px 0 0;
+}
+
+.prevButton {
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+/* i {
+  width: 50px;
+  height: 50px;
+} */
+
+#todoInfo {
+  width: 393px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  .todoListTitle {
+    margin-top: 40px;
+    width: 336px;
+    margin-bottom: 10px;
+  }
+
+  .todoList {
+    margin-left: 0;
+    width: 336px;
+    min-height: 55px;
+    padding: 6px;
+    border-radius: 5px;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+  }
+  .detailContent {
+    height: 455px;
+    display: flex;
+    align-items: start;
+    padding: 12px 6px;
+  }
+
+  .modifyButton {
+    width: 336px;
+    height: 58px;
+    border-radius: 10px;
+    background-color: #383cc2;
+    border: none;
+    margin: 32px 0 17px;
+    color: white;
+  }
+  .pageTitle {
+    font-style: italic;
+  }
+}
