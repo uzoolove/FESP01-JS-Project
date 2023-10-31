@@ -1,9 +1,9 @@
-import TodoList from './pages/list/TodoList.js';
+import Router from "./Router.js";
 
-const App = async function(){
-  const content = document.createElement('div');
-  content.setAttribute('id', 'app');
-  content.appendChild(await TodoList());
+const App = async function () {
+  const content = document.createElement("div");
+  content.setAttribute("id", "app");
+  content.appendChild(await Router());
   return content;
 };
 

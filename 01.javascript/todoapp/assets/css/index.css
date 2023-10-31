@@ -1,0 +1,9 @@
+#content-done,
+#content-not-done {
+  width: 500px;
+  height: 500px;
+  background-color: beige;
+  margin: 20px;
+  padding: 10px;
+  border: 1px black solid;
+}
