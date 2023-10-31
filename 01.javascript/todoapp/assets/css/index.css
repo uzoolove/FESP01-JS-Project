@@ -1,6 +1,6 @@
 body {
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   height: 100vh;
   /* background-color: #e8e8e8; */
   font-family: "Noto Sans KR", sans-serif;
@@ -118,6 +118,82 @@ body {
   }
 }
 
+#update {
+  background-color: "white";
+}
+
+#update .wrapper {
+  padding: 30px;
+  background-color: white;
+  border-radius: 20px;
+  height: 90vh;
+  width: 80%;
+  margin: 0px auto;
+}
+
+#update .form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 25px;
+  height: 100%;
+}
+
+#update .headerNode {
+  margin: 0 auto;
+}
+
+#update .h1 {
+  margin: 0px 0px;
+}
+
+#update .titleBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#update .detailBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#update .titleInput {
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+#update .detailInput {
+  height: 355px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+#update .addButton {
+  background-color: #383cc2;
+  color: white;
+  padding: 16px 0px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+#update .deleteButton {
+  background-color: #c23838;
+  color: white;
+  padding: 16px 0px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
 #regist {
   background-color: "white";
 }
@@ -185,6 +261,7 @@ body {
   font-size: 20px;
   border-radius: 10px;
 }
+
 .topSection {
   background-color: #383cc2;
   width: 393px;
