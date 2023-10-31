@@ -85,14 +85,6 @@ const TodoInfo = async function () {
     }
   });
 
-  // //뒤로가기 버튼
-  // const btnBack = document.createElement("button");
-  // btnBack.textContent = "뒤로가기";
-  // btnBack.onclick = () => {
-  //   window.history.back();
-  // };
-  // content.appendChild(btnBack);
-
   //홈 버튼
   const btnGoHome = document.createElement("button");
   btnGoHome.textContent = "홈으로 이동";
