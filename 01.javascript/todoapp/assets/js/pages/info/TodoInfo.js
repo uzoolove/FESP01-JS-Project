@@ -8,10 +8,12 @@ const TodoInfo = async function ({ _id } = {}) {
 
   const content = document.createElement("div");
   const text = document.createTextNode(`_id=${_id} 상세 조회 화면`);
+  const btnTitle = document.createTextNode("수정하기");
   content.appendChild(text);
 
   page.appendChild(Header("TODO App 상세 조회"));
   page.appendChild(content);
+
   page.appendChild(Footer());
 
   return page;
