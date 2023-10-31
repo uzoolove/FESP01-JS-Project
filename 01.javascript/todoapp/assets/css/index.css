@@ -1,19 +1,22 @@
-li {
-  list-style-type: none;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
 body {
   display: flex;
   justify-content: center;
+  height: 100vh;
+  /* background-color: #e8e8e8; */
+  font-family: "Noto Sans KR", sans-serif;
 }
 
-#app {
-  height: 720px;
+#todoList #app {
+  height: 100%;
+}
+
+#todoList li {
+  list-style-type: none;
+}
+
+#todoList a {
+  text-decoration: none;
+  color: black;
 }
 
 @media screen and (max-width: 769px) {
@@ -22,29 +25,224 @@ body {
   body {
     background-color: #383cc2;
   }
-  h1 {
+
+  #todoList h1 {
+    font-size: 29px;
     color: white;
+    margin: 45px 30px 22px 30px;
   }
   /* .mainContainer {
     background-color: white;
     width: 300px;
     height: 400px;
   } */
-  #content {
+  #todoList #content {
     background-color: white;
+    position: relative;
     width: 390px;
-    height: 500px;
+    height: 80vh;
     border-radius: 40px 40px 0 0;
     padding-top: 25px;
   }
 
-  .todoItem {
+  #todoList .todoItem {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    color: black;
+    justify-content: space-between;
+    padding: 16px 0;
   }
 
-  /* .todolist {
-    padding: 37px;
-  } */
+  #todoList .todoItem button {
+    border: none;
+    background-color: transparent;
+    color: #616161;
+  }
+
+  #todoList .todolist {
+    padding: 0 38px;
+  }
+
+  #todoList .todolist a {
+    font-weight: bold;
+  }
+
+  #todoList input[type="checkbox"] + label {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background: url("../img/checkboxOff.png") no-repeat 0 0px / contain;
+    cursor: pointer;
+  }
+
+  #todoList input[type="checkbox"]:checked + label {
+    width: 24px;
+    height: 24px;
+    background: url("../img/checkboxOn.png") no-repeat 0 0px / contain;
+    cursor: pointer;
+  }
+
+  #todoList input[type="checkbox"] {
+    display: none;
+  }
+
+  #todoList .todoSubButtonList {
+    position: absolute;
+    right: -9.5px;
+    top: -27px;
+    border: white solid 0.2px;
+    padding: 1.5px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #e6e6e6;
+  }
+  #todoList .todoSubButtonList li {
+    padding: 1px 0;
+  }
+  #todoList .todoSubButtonList li:first-child {
+    border-bottom: 1px solid #e6e6e6;
+    color: #383cc2;
+  }
+  #todoList .todoSubButtonList li:last-child {
+    color: #c23838;
+  }
+  #todoList #addButton {
+    height: 72px;
+    width: 72px;
+    background: #383cc2;
+    border-radius: 25%;
+    color: white;
+    border: none;
+    position: absolute;
+    bottom: 27px;
+    right: 23px;
+  }
+}
+
+#regist {
+  background-color: "white";
+}
+
+#regist .wrapper {
+  padding: 30px;
+  background-color: white;
+  border-radius: 20px;
+  height: 90vh;
+  width: 80%;
+  margin: 0px auto;
+}
+
+#regist .form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 25px;
+  height: 100%;
+}
+
+#regist .headerNode {
+  margin: 0 auto;
+}
+
+#regist .h1 {
+  margin: 0px 0px;
+}
+
+#regist .titleBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#regist .detailBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 20px;
+}
+
+#regist .titleInput {
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+#regist .detailInput {
+  height: 355px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+
+#regist .addButton {
+  background-color: #383cc2;
+  color: white;
+  padding: 16px 0px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.topSection {
+  background-color: #383cc2;
+  width: 393px;
+  height: 80px;
+  border-radius: 20px 20px 0 0;
+}
+
+.prevButton {
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+/* i {
+  width: 50px;
+  height: 50px;
+} */
+
+#todoInfo {
+  width: 393px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  .todoListTitle {
+    margin-top: 40px;
+    width: 336px;
+    margin-bottom: 10px;
+  }
+
+  .todoList {
+    margin-left: 0;
+    width: 336px;
+    min-height: 55px;
+    padding: 6px;
+    border-radius: 5px;
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+  }
+  .detailContent {
+    height: 455px;
+    display: flex;
+    align-items: start;
+    padding: 12px 6px;
+  }
+
+  .modifyButton {
+    width: 336px;
+    height: 58px;
+    border-radius: 10px;
+    background-color: #383cc2;
+    border: none;
+    margin: 32px 0 17px;
+    color: white;
+  }
+  .pageTitle {
+    font-style: italic;
+  }
 }
