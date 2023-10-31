@@ -13,11 +13,11 @@ const TodoInfo = async function ({ _id } = {}) {
   page.appendChild(topSection);
 
   const previousButton = document.createElement("button");
-  const previousText = document.createTextNode("<");
-  // previousButton.innerHTML = '<i class="fa-solid fa-angle-left"></i>';
-  topSection.appendChild(previousButton);
-  previousButton.appendChild(previousText);
+  const previousIcon = document.createElement("i");
   previousButton.className = "prevButton";
+  previousIcon.className = "fa-solid fa-angle-left fa-xl";
+  topSection.appendChild(previousButton);
+  previousButton.appendChild(previousIcon);
 
   const content = document.createElement("dl");
 
@@ -76,9 +76,6 @@ const TodoInfo = async function ({ _id } = {}) {
   }
 
   page.appendChild(Header("TODO App 상세 조회"));
-  const pageTitle = document.querySelector("h1");
-  pageTitle.className = "pageTitle";
-  // pageTitle.ariaHidden = true;
 
   page.appendChild(content);
   page.appendChild(Footer());
