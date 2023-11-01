@@ -62,7 +62,6 @@ const TodoInfo = async function () {
   checkboxDetail.type = "checkbox";
   checkboxDetail.checked = item.done;
   infoContentsSection.appendChild(checkboxDetail);
-  content.appendChild(checkboxDetail);
   checkboxDetail.addEventListener("click", () =>
     update({ ...item, done: checkboxDetail.checked })
   );

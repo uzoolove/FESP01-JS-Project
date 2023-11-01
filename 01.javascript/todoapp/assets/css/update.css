@@ -69,14 +69,14 @@ input[type="checkbox"]:hover:not(:disabled) {
 }
 
 header {
-  background-color: lightblue;
+  /* background-color: lightblue; */
   font-size: 2rem;
   font-weight: bold;
   padding-block: 0.8rem;
 }
 footer {
-  background-color: lightblue;
-  font-size: 2rem;
+  /* background-color: lightblue; */
+  /* font-size: 2rem; */
   font-weight: bold;
   padding-block: 0.8rem;
 }

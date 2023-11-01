@@ -53,14 +53,14 @@ input[type="submit"] {
 }
 
 header {
-  background-color: lightblue;
+  /* background-color: lightcyan; */
   font-size: 2rem;
   font-weight: bold;
   padding-block: 0.8rem;
 }
 footer {
-  background-color: lightblue;
-  font-size: 2rem;
+  /* background-color: lightblue; */
+  /* font-size: 2rem; */
   font-weight: bold;
   padding-block: 0.8rem;
 }
