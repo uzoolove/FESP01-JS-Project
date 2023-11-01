@@ -5,6 +5,7 @@ import { linkTo } from "../../Router.js";
 import handleDateForm from "../../../utils/handleDateForm.js";
 import getId from "../../../utils/getId.js";
 import useSelectTodoInfo from "../../../axios/useSelectTodoInfo.js";
+import update from "../../apis/update.js";
 
 const TodoInfo = async function () {
   //주소에서 id 가져오기
@@ -61,6 +62,10 @@ const TodoInfo = async function () {
   checkboxDetail.type = "checkbox";
   checkboxDetail.checked = item.done;
   infoContentsSection.appendChild(checkboxDetail);
+  content.appendChild(checkboxDetail);
+  checkboxDetail.addEventListener("click", () =>
+    update({ ...item, done: checkboxDetail.checked })
+  );
 
   //수정하기 버튼
   const btnModify = document.createElement("button");
@@ -69,7 +74,7 @@ const TodoInfo = async function () {
   infoButtonsSection.appendChild(btnModify);
   btnModify.addEventListener("click", function (event) {
     event.preventDefault();
-    linkTo("update");
+    linkTo(`update?_id=${ID}`);
   });
 
   //삭제하기 버튼
