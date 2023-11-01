@@ -1,0 +1,82 @@
+.update {
+  text-align: center;
+
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  .form {
+    position: relative;
+    border: 1px solid #111;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 0.2rem;
+    padding: 1rem;
+  }
+
+  #update-detail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    text-align: right;
+    .title {
+      font-size: 1.2rem;
+      text-align: left;
+      margin-block: 0.8rem;
+    }
+    .title-update {
+      width: 96%;
+      height: 1.2rem;
+    }
+    .content {
+      font-size: 1.2rem;
+      text-align: left;
+      margin-block: 0.8rem;
+    }
+    .content-update {
+      width: 96%;
+      height: 4rem;
+      margin-bottom: 1rem;
+    }
+    .cancel {
+      margin-left: 0.5rem;
+    }
+
+    .checkbox {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+button,
+input[type="submit"] {
+  background-color: transparent;
+  border: 1px solid #cfcfcf;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+}
+
+button:hover,
+input[type="submit"]:hover:not(:disabled),
+input[type="checkbox"]:hover:not(:disabled) {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+header {
+  background-color: lightblue;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-block: 0.8rem;
+}
+footer {
+  background-color: lightblue;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-block: 0.8rem;
+}
