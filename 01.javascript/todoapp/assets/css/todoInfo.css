@@ -1,0 +1,126 @@
+div.info:has(div#app) {
+  position: relative;
+}
+.info {
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.info header h1 {
+  font-weight: 800;
+  text-align: center;
+  padding: 20px 0;
+  font-size: x-large;
+}
+
+.info main {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-rows: 1fr 6fr 1fr;
+  position: relative;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+  padding: 30px 20px 10px 20px;
+  display: grid;
+  grid-template-rows: 8fr 2fr;
+  width: 70vw;
+  grid-row-gap: 20px;
+}
+
+.info main #checkbox {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
+.info #info-contents-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 7fr 1fr;
+  grid-row-gap: 8px;
+}
+
+.info #info-contents-section > #info-todo-title {
+  grid-area: 1/1/2/3;
+  font-weight: bold;
+}
+.info #info-contents-section > label {
+  grid-area: 2/1/2/3;
+  font-weight: bold;
+}
+.info #info-contents-section > #info-todo-content {
+  grid-area: 3/1/8/3;
+  background-color: ghostwhite;
+  padding: 10px;
+  border-radius: 6px;
+}
+.info #info-contents-section > #info-create-time {
+  grid-area: 9/1/9/2;
+}
+.info #info-contents-section > #info-update-time {
+  grid-area: 9/2/9/3;
+}
+
+.info #info-buttons-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.info #info-buttons-section > #info-btn-modify {
+  grid-area: 1/2/1/3;
+  background-color: cadetblue;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  text-shadow: 2px 2px 2px gray;
+  cursor: pointer;
+}
+.info #info-buttons-section > #info-btn-delete {
+  grid-area: 1/3/1/4;
+  background-color: lightcoral;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  text-shadow: 2px 2px 2px gray;
+  cursor: pointer;
+}
+.info #info-buttons-section > #info-btn-home {
+  grid-area: 2/2/2/4;
+  background-color: lightgrey;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.info footer {
+  height: 10vh;
+  width: 100vw;
+  text-align: center;
+  position: relative;
+}
+
+.info footer > p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .info main {
+    width: 50vw;
+  }
+}
+@media (min-width: 1080px) {
+  .info main {
+    width: 30vw;
+  }
+}
