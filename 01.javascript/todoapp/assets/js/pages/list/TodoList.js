@@ -32,6 +32,7 @@ const sortItems = (items, key, order) => {
 const TodoList = async function () {
   const page = document.createElement("div");
   page.setAttribute("id", "page");
+  page.className = "list";
 
   const containerList = document.createElement("div");
   containerList.setAttribute("id", "container-list");
