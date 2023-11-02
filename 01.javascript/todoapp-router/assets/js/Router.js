@@ -4,7 +4,7 @@ import TodoInfo from './pages/info/TodoInfo.js';
 
 async function getPage(){
   let page;
-  console.log(location);
+
   switch(location.pathname){
     case '/':
       page = await TodoList();
