@@ -1,16 +1,11 @@
 // 할일 수정
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
-
-import isEmpty from "../../utils/isEmpty.js";
 import update from "../../apis/update.js";
+import getId from "../../../utils/getId.js";
 
 const TodoUpdate = async () => {
-  //주소에서 id 가져오기
-  const urlStr = window.location.href;
-  const url = new URL(urlStr);
-  const urlparams = url.searchParams;
-  const ID = urlparams.get("_id");
+  const ID = getId();
 
   const response = await axios.get(`http://localhost:33088/api/todolist/${ID}`);
 
