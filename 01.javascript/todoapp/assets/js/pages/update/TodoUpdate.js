@@ -2,7 +2,7 @@
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import useUpdateTodoInfo from "../../apis/useUpdateTodoInfo.js";
-import getId from "../../../utils/getId.js";
+import getId from "../../utils/getId.js";
 import useSelectTodoInfo from "../../apis/useSelectTodoInfo.js";
 
 const TodoUpdate = async () => {

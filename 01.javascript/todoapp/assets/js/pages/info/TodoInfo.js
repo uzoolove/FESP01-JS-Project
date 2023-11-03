@@ -2,8 +2,8 @@
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import { linkTo } from "../../Router.js";
-import handleDateForm from "../../../utils/handleDateForm.js";
-import getId from "../../../utils/getId.js";
+import handleDateForm from "../../utils/handleDateForm.js";
+import getId from "../../utils/getId.js";
 import useSelectTodoInfo from "../../apis/useSelectTodoInfo.js";
 import useUpdateTodoInfo from "../../apis/useUpdateTodoInfo.js";
 
