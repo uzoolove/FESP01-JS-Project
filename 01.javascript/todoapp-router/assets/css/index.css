@@ -1,4 +1,7 @@
-@import './TodoList.css';
+@import './todoList.css';
+@import './todoRegist.css';
+@import './todoDetail.css';
+
 
 * {
     margin: 0;
@@ -33,25 +36,21 @@ footer {
     position: relative;
 }
 
-  /* textarea style */
-  /*textarea {
-    width: 100%;
-    height: 250px;
-    border-radius: 25px;
-    background: #f3f3f3;
-    box-shadow: 13px 10px 15px -3px rgba(68, 68, 68, 0.2);
-    margin-top: 36px;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 600;
-    padding: 30px 30px;
+.back-button {
+    background-color: #ffffff;
     border: none;
-    cursor: pointer;
-    outline: none;
-    resize: none;
-  }
-  
-  textarea:hover {
-    background-color: white;
-    transition: all 0.3s ease-in-out;
-  }
+}
+
+.back-button:hover {
+    background-color: rgb(244, 244, 244);
+}
+
+.submit-button {
+    background-color: #c081d9;
+    color: white;
+    border: none;
+}
+
+.submit-button:hover {
+    background-color: #9a3bbf;
+}

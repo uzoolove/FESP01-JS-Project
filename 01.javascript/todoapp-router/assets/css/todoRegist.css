@@ -1,0 +1,49 @@
+#regist-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#regist-form input {
+  background-color: #fff;
+  font-size: 20px;
+  padding: 15px 30px;
+  border: none;
+  border-bottom: 0.2px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+}
+
+textarea {
+  background-color: #fff;
+  height: 425px;
+  font-size: 23px;
+  font-family:unset;
+  font-weight: 500;
+  padding: 30px 30px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  resize: none;
+}
+
+#regist-form input:hover , textarea:hover {
+  background-color: rgb(244, 244, 244);
+  transition: all 0.3s ease-in-out;
+}
+
+
+#regist-button-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#regist-button-box button {
+  margin: 13px 0px;
+  width: 50%;
+  font-size: 20px;
+  padding: 10px 0px;
+  cursor: pointer;
+  box-shadow: 0px 5px 10px rgba(180, 174, 174, 0.688);
+}
