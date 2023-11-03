@@ -3,13 +3,12 @@ import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
 import update from "../../apis/update.js";
 import getId from "../../../utils/getId.js";
+import useSelectTodoInfo from "../../../axios/useSelectTodoInfo.js";
 
 const TodoUpdate = async () => {
   const ID = getId();
-
-  const response = await axios.get(`http://localhost:33088/api/todolist/${ID}`);
-
-  const item = response.data.item;
+  const data = await useSelectTodoInfo(ID);
+  const item = data.item;
 
   const page = document.createElement("div");
   page.setAttribute("id", "page");
