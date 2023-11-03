@@ -1,9 +1,9 @@
 // 할일 수정
 import Header from "../../layout/Header.js";
 import Footer from "../../layout/Footer.js";
-import update from "../../apis/update.js";
+import useUpdateTodoInfo from "../../apis/useUpdateTodoInfo.js";
 import getId from "../../../utils/getId.js";
-import useSelectTodoInfo from "../../../axios/useSelectTodoInfo.js";
+import useSelectTodoInfo from "../../apis/useSelectTodoInfo.js";
 
 const TodoUpdate = async () => {
   const ID = getId();
@@ -79,8 +79,7 @@ const TodoUpdate = async () => {
       alert("상세 내용을 입력하세요");
     }
     if (confirm("할 일을 수정하시겠습니까?")) {
-      // axios post
-      update({
+      useUpdateTodoInfo({
         ...item,
         title: titleInput.value,
         content: contentInput.value,

@@ -4,8 +4,8 @@ import Footer from "../../layout/Footer.js";
 import { linkTo } from "../../Router.js";
 import handleDateForm from "../../../utils/handleDateForm.js";
 import getId from "../../../utils/getId.js";
-import useSelectTodoInfo from "../../../axios/useSelectTodoInfo.js";
-import update from "../../apis/update.js";
+import useSelectTodoInfo from "../../apis/useSelectTodoInfo.js";
+import useUpdateTodoInfo from "../../apis/useUpdateTodoInfo.js";
 
 const TodoInfo = async function () {
   //주소에서 id 가져오기
@@ -63,7 +63,7 @@ const TodoInfo = async function () {
   checkboxDetail.checked = item.done;
   infoContentsSection.appendChild(checkboxDetail);
   checkboxDetail.addEventListener("click", () =>
-    update({ ...item, done: checkboxDetail.checked })
+    useUpdateTodoInfo({ ...item, done: checkboxDetail.checked })
   );
 
   //수정하기 버튼
