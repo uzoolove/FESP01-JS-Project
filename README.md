@@ -7,5 +7,5 @@
 
 ## 02.typescript
 * 자바스크립트를 타입스크립트로 리팩토링
-* https://github.com/uzoolove/FESP01-JS-Project/02.typescript/README.md 참조
+* https://github.com/uzoolove/FESP01-JS-Project/tree/main/02.typescript 참조
 
