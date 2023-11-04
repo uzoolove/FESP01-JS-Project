@@ -3,6 +3,7 @@ import Header from '../../layout/Header.js';
 import Footer from '../../layout/Footer.js';
 import {linkTo} from '../../Router.js';
 
+
 const TodoList = async function(){
   const page = document.createElement('div');
   page.setAttribute('id', 'page');
@@ -43,11 +44,12 @@ const TodoList = async function(){
     });
 
   }catch(err){
+    console.error(err);
     const error = document.createTextNode('일시적인 오류 발생');
     content.appendChild(error);
   }
   
-  page.appendChild(Header('TODO App 목록 조회'));
+  page.appendChild(Header('목록 조회'));
   page.appendChild(content);
   page.appendChild(Footer());
   return page;
