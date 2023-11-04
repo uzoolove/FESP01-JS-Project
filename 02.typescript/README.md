@@ -2,8 +2,9 @@
 
 ## 개발 환경 구축
 ### Vite
-* Vite: Webpack, Rollup, Parcel 등의 도구처럼 자바스크립트 프로젝트 개발, 빌드, 배포에 사용하는 번들링 도구
+* Vite: Webpack, Rollup, Parcel 등의 도구처럼 자바스크립트 기반의 프로젝트 개발, 빌드, 배포에 사용하는 도구
 * 프로젝트 종류에 따라서 기본 환경을 세팅해주는 보일러 플레이트 제공
+  - Vanilla JavaScript, Vanilla TypeScript, Vue, React, Preact, Lit, Svelte, Solid, Qwik 등
 
 ### 번들링 도구가 필요한 이유
 * 타입스크립트 프로젝트 배표시 필요한 작업을 자동화
