@@ -65,7 +65,7 @@ const TodoInfo = async () => {
         detailTitleBox.setAttribute('class', 'detail-title-content');
 
         const detailTitle = document.createElement("h3");
-        const titleText = document.createTextNode(`${substituteKeyName}`);
+        const titleText = document.createTextNode(`${ substituteKeyName }`);
 
         detailTitle.appendChild(titleText);
         detailTitleBox.appendChild(detailTitle);
@@ -74,7 +74,7 @@ const TodoInfo = async () => {
         detailContentBox.setAttribute('class', 'detail-title-content contentText');
 
         const detailContent = document.createElement("span");
-        const contentText = document.createTextNode(`${item}`);
+        const contentText = document.createTextNode(`${ item }`);
 
         detailContent.appendChild(contentText);
         detailContentBox.appendChild(detailContent);
@@ -108,7 +108,7 @@ const TodoInfo = async () => {
 
   //NOTE - 버튼 클릭 시 동작 설정
   backButton.addEventListener("click", () => linkTo('/'));
-  toEditButton.addEventListener("click", () => linkTo(`/update?_id=${_id}`));
+  toEditButton.addEventListener("click", () => linkTo(`/update?_id=${ _id }`));
   deleteButton.addEventListener("click", () => {
     onClickDeleteInInfo(_id);
   });

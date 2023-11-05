@@ -36,7 +36,7 @@ const TodoUpdate = async () => {
   ButtonBox.setAttribute('class', 'button-area');
   backButton.setAttribute('type', 'button');
   backButton.setAttribute('class', 'back-button');
-  backButton.setAttribute('href', `info?_id=${_id}`);
+  backButton.setAttribute('href', `info?_id=${ _id }`);
 
   submitEditButton.setAttribute('class', 'submit-button');
   submitEditButton.setAttribute('type', 'submit');

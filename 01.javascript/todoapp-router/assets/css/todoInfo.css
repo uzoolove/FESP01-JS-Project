@@ -9,8 +9,11 @@
   overflow: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   white-space: pre-wrap;
+}
+
+#detail-row {
+  padding: 20px 0px;
 }
 
 .detail-title-content {
@@ -27,7 +30,5 @@
   font-weight: 450;
 }
 
-.contentText {
-  max-height: 130px;
-  overflow: auto;
-}
+
+

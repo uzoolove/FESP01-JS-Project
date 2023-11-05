@@ -38,10 +38,10 @@ const TodoList = async () => {
       const deleteButton = document.createElement('i');
 
       //NOTE - 요소에 속성 및 클래스 추가
-      li.setAttribute('id', `${todo._id}`);
+      li.setAttribute('id', `${ todo._id }`);
       checkbox.setAttribute('type', 'checkbox');
-      checkbox.setAttribute('id', `checkbox_${todo._id}`);
-      todoInfoLink.setAttribute('href', `info?_id=${todo._id}`);
+      checkbox.setAttribute('id', `checkbox_${ todo._id }`);
+      todoInfoLink.setAttribute('href', `info?_id=${ todo._id }`);
       deleteButton.setAttribute('class', 'fa-regular fa-trash-can');
 
       //NOTE - 요소 구성
