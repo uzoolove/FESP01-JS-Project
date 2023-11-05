@@ -4,12 +4,13 @@ import { linkTo } from "../Router.js";
 const BASE_URL = 'http://localhost:33088';
 
 
+//NOTE - 할일 목록을 가져오는 함수
 export const getTodoList = async () =>{
   const response = await axios.get(`${ BASE_URL }/api/todolist`);
   return response;
 }
 
-
+//NOTE - 할일 등록을 처리하는 함수
 export const onSubmitTodoRegister = async (event, titleInput, contentInput) => {
   event.preventDefault();
 
@@ -40,7 +41,7 @@ export const onSubmitTodoRegister = async (event, titleInput, contentInput) => {
   }
 }
 
-
+//NOTE - 체크박스 상태 변경을 처리하는 함수
 export const onChangeCheckbox = async (event, checkbox, todo) => {
 
   const isChecked = checkbox.checked;
@@ -71,7 +72,7 @@ export const onChangeCheckbox = async (event, checkbox, todo) => {
   }
 }
 
-
+//NOTE - TodoList 화면에서 할일 삭제를 처리하는 함수
 export const onClickDeleteTodo =  async (todoId, li) => {
   try {
     if (confirm('정말 삭제 하시겠습니까?')) {
@@ -89,7 +90,7 @@ export const onClickDeleteTodo =  async (todoId, li) => {
   }
 }
 
-
+//NOTE - 할일의 상세 정보 데이터를 가져오는 함수
 export const getTodoData = async (todoId) => {
   try {
     const response = 
@@ -104,7 +105,7 @@ export const getTodoData = async (todoId) => {
   }
 };
 
-
+//NOTE - 할일 삭제를 처리하는 함수 (상세 정보 페이지에서 사용)
 export const onClickDeleteInInfo = async (todoId) => {
   try {
     const response = 
@@ -121,7 +122,7 @@ export const onClickDeleteInInfo = async (todoId) => {
   }
 }
 
-
+//NOTE - 할일 수정을 처리하는 함수
 export const onClickEditTodo = async (
   event, 
   titleInput, 
