@@ -6,7 +6,7 @@ import {
   getTodoList,
   onChangeCheckbox, 
   onClickDeleteTodo
-} from '../../../api/todos.api.js';
+} from '../../api/todos.api.js';
 
 
 
@@ -56,14 +56,17 @@ const TodoList = async () => {
         todoInfoLink.classList.add('line-through');
       }
 
+
       checkbox.addEventListener('change', (event) => {
-        onChangeCheckbox(event, checkbox, todo)
+        onChangeCheckbox(event, checkbox, todo);
       });
+
 
       todoInfoLink.addEventListener('click', (event) => {
         event.preventDefault();
         linkTo(todoInfoLink.getAttribute('href'));
       });
+
 
       deleteButton.addEventListener('click', () => {
         onClickDeleteTodo(todo._id, li);
@@ -74,6 +77,7 @@ const TodoList = async () => {
     content.appendChild(ul);
     registButton.appendChild(buttonTitle);
     content.appendChild(registButton);
+
 
     registButton.addEventListener('click', () => {
       return linkTo('/regist');

@@ -5,7 +5,7 @@ import { linkTo } from "../../Router.js";
 import { 
   getTodoData, 
   onClickDeleteInInfo } 
-  from "../../../api/todos.api.js";
+  from "../../api/todos.api.js";
 
 
 
@@ -19,29 +19,29 @@ const TodoInfo = async () => {
 
 
   const content = document.createElement("div");
-  const detailForm = document.createElement("form");
+  const detailContainer = document.createElement("div");
   const detailTitleArea = document.createElement("div");
   const detailContentArea = document.createElement("div");
   const buttonArea = document.createElement("div");
-  //뒤로가기 버튼
+
   const backButton = document.createElement("button");
-  const backButtonTitle = document.createTextNode("뒤로가기");
-  //수정 버튼
-  const EditButton = document.createElement("button");
-  const EditButtonTitle = document.createTextNode("수정하기");
-  //삭제버튼
+  const backButtonText = document.createTextNode("뒤로가기");
+
+  const toEditButton = document.createElement("button");
+  const toEditButtonText = document.createTextNode("수정하기");
+
   const deleteButton = document.createElement("button");
-  const deleteButtonTitle = document.createTextNode("삭제");
+  const deleteButtonText = document.createTextNode("삭제");
 
 
   content.setAttribute("class", "todo-detail-container");
-  detailForm.setAttribute("class", "todo-detail-form");
+  detailContainer.setAttribute("class", "todo-detail-form");
   detailTitleArea.setAttribute("class", "detail-title-area");
   detailContentArea.setAttribute("class", "detail-content-area");
   buttonArea.setAttribute("class", "button-area");
   backButton.setAttribute("class", "back-button");
   deleteButton.setAttribute("class", "submit-button");
-  EditButton.setAttribute("class", "submit-button");
+  toEditButton.setAttribute("class", "submit-button");
 
 
   const toDoDetailRender = async (data) => {
@@ -57,10 +57,13 @@ const TodoInfo = async () => {
     for (const [key, item] of Object.entries(data)) {
       if (substituteKeyNames[key]) {
         const substituteKeyName = substituteKeyNames[key];
+
         const detailRow = document.createElement('div');
         detailRow.setAttribute('id', 'detail-row');
+
         const detailTitleBox = document.createElement("div");
         detailTitleBox.setAttribute('class', 'detail-title-content');
+
         const detailTitle = document.createElement("h3");
         const titleText = document.createTextNode(`${ substituteKeyName }`);
 
@@ -69,6 +72,7 @@ const TodoInfo = async () => {
 
         const detailContentBox = document.createElement("div");
         detailContentBox.setAttribute('class', 'detail-title-content contentText');
+
         const detailContent = document.createElement("span");
         const contentText = document.createTextNode(`${ item }`);
 
@@ -77,7 +81,7 @@ const TodoInfo = async () => {
         detailRow.appendChild(detailTitleBox);
         detailRow.appendChild(detailContentBox);
 
-        detailForm.appendChild(detailRow);
+        detailContainer.appendChild(detailRow);
       }
     }
   }
@@ -87,14 +91,14 @@ const TodoInfo = async () => {
   await toDoDetailRender(todoData);
 
 
-  backButton.appendChild(backButtonTitle);
+  backButton.appendChild(backButtonText);
   buttonArea.appendChild(backButton);
-  EditButton.appendChild(EditButtonTitle);
-  buttonArea.appendChild(EditButton);
-  deleteButton.appendChild(deleteButtonTitle);
+  toEditButton.appendChild(toEditButtonText);
+  buttonArea.appendChild(toEditButton);
+  deleteButton.appendChild(deleteButtonText);
   buttonArea.appendChild(deleteButton);
 
-  content.appendChild(detailForm);
+  content.appendChild(detailContainer);
   content.appendChild(buttonArea);
 
   page.appendChild(Header("TODO 상세 페이지"));
@@ -103,7 +107,7 @@ const TodoInfo = async () => {
 
 
   backButton.addEventListener("click", () => linkTo('/'));
-  EditButton.addEventListener("click", () => linkTo(`/update?_id=${ _id }`));
+  toEditButton.addEventListener("click", () => linkTo(`/update?_id=${ _id }`));
   deleteButton.addEventListener("click", () => {
     onClickDeleteInInfo(_id);
   });

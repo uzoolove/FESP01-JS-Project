@@ -2,7 +2,7 @@
 import Header from '../../layout/Header.js';
 import Footer from '../../layout/Footer.js';
 import { linkTo } from '../../Router.js';
-import { getTodoData, onClickEditTodo } from '../../../api/todos.api.js';
+import { getTodoData, onClickEditTodo } from '../../api/todos.api.js';
 
 
 
@@ -20,33 +20,33 @@ const TodoUpdate = async () => {
   const sumbmitForm = document.createElement('form');
   const titleInput = document.createElement('input');
   const contentInput = document.createElement('textarea');
-  const registButtonBox = document.createElement('div');
+  const ButtonBox = document.createElement('div');
   const backButton = document.createElement('button');
-  const submitRegisterButton = document.createElement('button');
   const backButtonText = document.createTextNode('취소');
-  const submitRegisterButtonText = document.createTextNode('수정');
+  const submitEditButton = document.createElement('button');
+  const submitEditButtonText = document.createTextNode('수정');
+
 
   sumbmitForm.setAttribute('id', 'regist-form');
   titleInput.setAttribute('type', 'text');
   titleInput.setAttribute('value', todoDetail.title);
-  titleInput.setAttribute('name', todoDetail.title);
-  contentInput.setAttribute('name', todoDetail.content);
   contentInput.textContent = todoDetail.content;
-  registButtonBox.setAttribute('class', 'button-area');
+  ButtonBox.setAttribute('class', 'button-area');
   backButton.setAttribute('type', 'button');
   backButton.setAttribute('class', 'back-button');
   backButton.setAttribute('href', `info?_id=${ _id }`);
-  submitRegisterButton.setAttribute('class', 'submit-button');
+  submitEditButton.setAttribute('class', 'submit-button');
+  submitEditButton.setAttribute('type', 'submit');
+
+
+  backButton.appendChild(backButtonText);
+  submitEditButton.appendChild(submitEditButtonText);
+  ButtonBox.appendChild(backButton);
+  ButtonBox.appendChild(submitEditButton);
 
   sumbmitForm.appendChild(titleInput);
   sumbmitForm.appendChild(contentInput);
-
-  backButton.appendChild(backButtonText);
-  submitRegisterButton.appendChild(submitRegisterButtonText);
-  registButtonBox.appendChild(backButton);
-  registButtonBox.appendChild(submitRegisterButton);
-
-  sumbmitForm.appendChild(registButtonBox);
+  sumbmitForm.appendChild(ButtonBox);
   page.appendChild(Header('TODO 수정'));
   page.appendChild(sumbmitForm);
   page.appendChild(Footer());

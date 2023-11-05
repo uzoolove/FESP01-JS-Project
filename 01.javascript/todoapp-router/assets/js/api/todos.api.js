@@ -1,4 +1,4 @@
-import { linkTo } from "../js/Router.js";
+import { linkTo } from "../Router.js";
 
 
 const BASE_URL = 'http://localhost:33088';
@@ -122,9 +122,16 @@ export const onClickDeleteInInfo = async (todoId) => {
 }
 
 
-export const onClickEditTodo = async (event, titleInput, contentInput, todoId, backButton) => 
+export const onClickEditTodo = async (
+  event, 
+  titleInput, 
+  contentInput, 
+  todoId, 
+  backButton
+  ) => 
 
 {
+
   event.preventDefault();
 
   if (titleInput.value === '' || contentInput.value === '') {
