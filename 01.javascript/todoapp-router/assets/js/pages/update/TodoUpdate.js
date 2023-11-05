@@ -30,6 +30,7 @@ const TodoUpdate = async () => {
   //NOTE - 요소에 속성 및 클래스 추가
   sumbmitForm.setAttribute('id', 'regist-form');
   titleInput.setAttribute('type', 'text');
+  titleInput.setAttribute('maxLength', 24);
   titleInput.setAttribute('value', todoDetail.title);
   contentInput.textContent = todoDetail.content;
 

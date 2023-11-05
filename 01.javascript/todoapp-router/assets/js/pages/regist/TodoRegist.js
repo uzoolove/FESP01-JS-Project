@@ -21,6 +21,7 @@ const TodoRegist = () => {
   //NOTE - 요소에 속성 및 클래스 추가
   RegistForm.setAttribute('id', 'regist-form');
   titleInput.setAttribute('type', 'text');
+  titleInput.setAttribute('maxLength', 24);
   titleInput.setAttribute('placeholder', '할일 제목');
   contentInput.setAttribute('placeholder', '할일 내용');
 

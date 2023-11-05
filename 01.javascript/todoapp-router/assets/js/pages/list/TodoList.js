@@ -32,7 +32,7 @@ const TodoList = async () => {
 
       const li = document.createElement('li');
       const checkbox = document.createElement('input');
-      const todoInfoLink = document.createElement('h4');
+      const todoInfoLink = document.createElement('h3');
       const title = document.createTextNode(todo.title);
       todoInfoLink.appendChild(title);
       const deleteButton = document.createElement('i');
