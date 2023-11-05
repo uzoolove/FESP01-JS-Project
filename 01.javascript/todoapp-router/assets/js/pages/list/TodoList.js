@@ -2,12 +2,15 @@
 import Header from '../../layout/Header.js';
 import Footer from '../../layout/Footer.js';
 import { linkTo } from '../../Router.js';
+import { 
+  getTodoList,
+  onChangeCheckbox, 
+  onClickDeleteTodo
+} from '../../../api/todos.api.js';
 
 
 
 const TodoList = async () => {
-
-  const BASE_URL = 'http://localhost:33088';
 
   const page = document.createElement('div');
   page.setAttribute('id', 'page');
@@ -18,58 +21,14 @@ const TodoList = async () => {
   const ul = document.createElement('ul');
   ul.setAttribute('class', 'todolist');
 
-  try {    
-    const response = await axios.get(`${ BASE_URL }/api/todolist`);
+  const registButton = document.createElement('button');
+  const buttonTitle = document.createTextNode('+');
+  registButton.setAttribute('id', 'regist-button');
+
+  try {
+    const response = await getTodoList();
 
     response.data?.items.map((todo) => {
-
-      const onChangeCheckbox = async (event) => {
-
-        const isChecked = checkbox.checked;
-
-        try {
-          const response = 
-          await axios
-          .patch(`${ BASE_URL }/api/todolist/${ todo._id }`, 
-          { done: isChecked });
-
-          if (response) {
-            const NEXT_SIBLING = event.target.nextSibling;
-
-            todo.done = isChecked;
-
-            if (isChecked) {
-              todo.done = false;
-              NEXT_SIBLING.classList.add('line-through');
-            } 
-            else {
-              todo.done = true;
-              NEXT_SIBLING.classList.remove('line-through');
-            }
-          }
-        } 
-        catch (error) {
-          console.error('API 업데이트에 실패했습니다:', error);
-        }
-      }
-
-      const onClickDeleteTodo =  async () => {
-        try {
-          if (confirm('정말 삭제 하시겠습니까?')) {
-            const response = 
-            await axios
-            .delete(`${BASE_URL}/api/todolist/${ todo._id }`);
-
-            if (response) {
-              li.remove();
-            }
-          }
-        } 
-        catch (error) {
-          console.error('API 삭제에 실패했습니다:', error);
-        }
-      }
-
 
       const li = document.createElement('li');
       const checkbox = document.createElement('input');
@@ -84,42 +43,40 @@ const TodoList = async () => {
       deleteButton.setAttribute('class', 'fa-regular fa-trash-can');
 
 
+      li.appendChild(checkbox);
+      todoInfoLink.appendChild(title);
+      li.appendChild(todoInfoLink);
+      li.appendChild(deleteButton);
+      ul.appendChild(li);
+
+
       checkbox.checked = todo.done;
 
       if (todo.done) {
         todoInfoLink.classList.add('line-through');
       }
 
-      checkbox.addEventListener('change', onChangeCheckbox);
+      checkbox.addEventListener('change', (event) => {
+        onChangeCheckbox(event, checkbox, todo)
+      });
 
       todoInfoLink.addEventListener('click', (event) => {
         event.preventDefault();
         linkTo(todoInfoLink.getAttribute('href'));
       });
 
-      deleteButton.addEventListener('click', onClickDeleteTodo);
-
-
-      li.appendChild(checkbox);
-      todoInfoLink.appendChild(title);
-      li.appendChild(todoInfoLink);
-      li.appendChild(deleteButton);
-      ul.appendChild(li);
+      deleteButton.addEventListener('click', () => {
+        onClickDeleteTodo(todo._id, li);
+      });
     });
 
+
     content.appendChild(ul);
-
-    const registButton = document.createElement('button');
-    const buttonTitle = document.createTextNode('+');
-
-    registButton.setAttribute('id', 'regist-button');
-
-
     registButton.appendChild(buttonTitle);
     content.appendChild(registButton);
 
     registButton.addEventListener('click', () => {
-      linkTo('/regist');
+      return linkTo('/regist');
     });
   }
   catch (error) {

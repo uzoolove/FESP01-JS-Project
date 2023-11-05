@@ -1,20 +1,23 @@
 import TodoList from './pages/list/TodoList.js';
 import TodoRegist from './pages/regist/TodoRegist.js';
 import TodoInfo from './pages/info/TodoInfo.js';
+import TodoUpdate from './pages/update/TodoUpdate.js';
 
 async function getPage(){
   let page;
 
   switch(location.pathname){
     case '/':
-      page = await TodoList();
+        page = await TodoList();
       break;
     case '/regist':
-      page = TodoRegist();
+        page = TodoRegist();
       break;
     case '/info':
       page = await TodoInfo();
       break;
+    case '/update':
+      page = await TodoUpdate();
   }
 
   return page;
