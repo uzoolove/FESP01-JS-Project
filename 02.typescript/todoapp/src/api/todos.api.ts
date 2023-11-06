@@ -75,9 +75,7 @@ export const onChangeCheckbox = async (
 };
 
 //NOTE - TodoList 화면에서 할일 삭제를 처리하는 함수
-export const onClickDeleteTodo = async (
-  todoId: number, 
-  li: HTMLElement): Promise<void> => {
+export const onClickDeleteTodo = async (todoId: number, li: HTMLElement): Promise<void> => {
   try {
     if (confirm('정말 삭제 하시겠습니까?')) {
       const response = await axios.delete<TodoListResponse>(`${BASE_URL}/api/todolist/${todoId}`);
