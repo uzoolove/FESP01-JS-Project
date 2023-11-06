@@ -57,30 +57,32 @@ const TodoInfo = async () => {
     for (const [key, item] of Object.entries(data)) {
       const substituteKeyName = substituteKeyNames[key as keyof typeof substituteKeyNames];
 
-      const detailRow = document.createElement('div');
-      detailRow.setAttribute('id', 'detail-row');
+      if (substituteKeyName) {
+        const detailRow = document.createElement('div');
+        detailRow.setAttribute('id', 'detail-row');
 
-      const detailTitleBox = document.createElement('div');
-      detailTitleBox.setAttribute('class', 'detail-title-content');
+        const detailTitleBox = document.createElement('div');
+        detailTitleBox.setAttribute('class', 'detail-title-content');
 
-      const detailTitle = document.createElement('h3');
-      const titleText = document.createTextNode(`${substituteKeyName}`);
+        const detailTitle = document.createElement('h3');
+        const titleText = document.createTextNode(`${substituteKeyName}`);
 
-      detailTitle.appendChild(titleText);
-      detailTitleBox.appendChild(detailTitle);
+        detailTitle.appendChild(titleText);
+        detailTitleBox.appendChild(detailTitle);
 
-      const detailContentBox = document.createElement('div');
-      detailContentBox.setAttribute('class', 'detail-title-content contentText');
+        const detailContentBox = document.createElement('div');
+        detailContentBox.setAttribute('class', 'detail-title-content contentText');
 
-      const detailContent = document.createElement('span');
-      const contentText = document.createTextNode(`${item}`);
+        const detailContent = document.createElement('span');
+        const contentText = document.createTextNode(`${item}`);
 
-      detailContent.appendChild(contentText);
-      detailContentBox.appendChild(detailContent);
-      detailRow.appendChild(detailTitleBox);
-      detailRow.appendChild(detailContentBox);
+        detailContent.appendChild(contentText);
+        detailContentBox.appendChild(detailContent);
+        detailRow.appendChild(detailTitleBox);
+        detailRow.appendChild(detailContentBox);
 
-      detailContainer.appendChild(detailRow);
+        detailContainer.appendChild(detailRow);
+      }
     }
   };
 
