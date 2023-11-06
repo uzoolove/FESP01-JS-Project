@@ -190,6 +190,11 @@ interface TodoResponse {
 import './todolist.css';
 ```
 
+#### axios 모듈 설치
+```
+npm i axios
+```
+
 #### axios 모듈 추가
 ```
 import axios from 'axios';
