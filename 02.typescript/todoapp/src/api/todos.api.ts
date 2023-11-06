@@ -1,23 +1,4 @@
 import { linkTo } from "../Router";
-<<<<<<< HEAD
-import axios, { AxiosResponse } from "axios";
-
-export interface Todo {
-  _id: string;
-  title: string;
-  content: string;
-  done: boolean;
-}
-
-interface TodoListResponse {
-  data: Todo[];
-}
-
-const BASE_URL = "http://localhost:33088";
-
-export const getTodoList = async (): Promise<AxiosResponse<TodoListResponse>> => {
-  const response = await axios.get<TodoListResponse>(`${BASE_URL}/api/todolist`);
-=======
 import axios from "../../node_modules/axios/index";
 
 const BASE_URL = "http://localhost:33088";
@@ -26,16 +7,16 @@ const BASE_URL = "http://localhost:33088";
 export const getTodoList = async () => {
   const response = 
   await axios<TodoListResponse>(`${ BASE_URL }/api/todolist`);
->>>>>>> 04b8bbb3c18cb09f6494dd2637ed1ab1e8fe61b0
+
   return response;
 };
 
 //NOTE - 할일 등록을 처리하는 함수
-<<<<<<< HEAD
-export const onSubmitTodoRegister = async (event: Event, titleInput: HTMLInputElement, contentInput: HTMLTextAreaElement) => {
-=======
-export const onSubmitTodoRegister = async (event: any, titleInput: any, contentInput: any) => {
->>>>>>> 04b8bbb3c18cb09f6494dd2637ed1ab1e8fe61b0
+export const onSubmitTodoRegister = async (
+  event: Event, 
+  titleInput: HTMLInputElement, 
+  contentInput: HTMLTextAreaElement) => {
+
   event.preventDefault();
 
   if (titleInput.value === "" || contentInput.value === "") {
@@ -64,28 +45,18 @@ export const onSubmitTodoRegister = async (event: any, titleInput: any, contentI
 };
 
 //NOTE - 체크박스 상태 변경을 처리하는 함수
-<<<<<<< HEAD
-export const onChangeCheckbox = async (event: Event, checkbox: HTMLInputElement, todo: Todo) => {
-  console.log(typeof event, typeof checkbox, typeof todo);
-  const isChecked = checkbox.checked;
-=======
 export const onChangeCheckbox = async (
   event: Event, checkbox: HTMLInputElement, todo: TodoItem): Promise<void> => {
 
     const isChecked: boolean = checkbox.checked;
->>>>>>> 04b8bbb3c18cb09f6494dd2637ed1ab1e8fe61b0
 
   try {
     const response = 
     await axios.patch(`${ BASE_URL }/api/todolist/${ todo._id }`, { done: isChecked });
 
     if (response) {
-<<<<<<< HEAD
       const target = event.target as HTMLInputElement;
       const NEXT_SIBLING = target.nextSibling as HTMLElement;
-=======
-      const NEXT_SIBLING = (event.target as HTMLElement)?.nextSibling;
->>>>>>> 04b8bbb3c18cb09f6494dd2637ed1ab1e8fe61b0
 
       todo.done = isChecked;
 
@@ -103,14 +74,9 @@ export const onChangeCheckbox = async (
 };
 
 //NOTE - TodoList 화면에서 할일 삭제를 처리하는 함수
-<<<<<<< HEAD
-export const onClickDeleteTodo = async (todoId: string, li: HTMLLIElement) => {
-  console.log(typeof todoId, typeof li);
-=======
 export const onClickDeleteTodo = async (
   todoId: number, li: HTMLElement): Promise<void> => {
 
->>>>>>> 04b8bbb3c18cb09f6494dd2637ed1ab1e8fe61b0
   try {
     if (confirm("정말 삭제 하시겠습니까?")) {
       const response = 
@@ -154,11 +120,8 @@ export const onClickDeleteInInfo = async (todoId: string) => {
 };
 
 //NOTE - 할일 수정을 처리하는 함수
-<<<<<<< HEAD
-export const onClickEditTodo = async (event: Event, titleInput: HTMLInputElement, contentInput: HTMLTextAreaElement, todoId: string) => {
-=======
 export const onClickEditTodo = async (event: any, titleInput: any, contentInput: any, todoId: any, backButton: any) => {
->>>>>>> 04b8bbb3c18cb09f6494dd2637ed1ab1e8fe61b0
+
   event.preventDefault();
 
   if (titleInput.value === "" || contentInput.value === "") {
