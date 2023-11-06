@@ -1,10 +1,15 @@
 // 할일 등록
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
-import TodoUpdate from "../update/TodoUpdate";
 import Nav from "../../layout/Nav";
+import axios from "axios";
+import { linkTo } from "../../Router";
 
-const TodoInfo = async function ({ _id } = {}) {
+interface TodoInfoProps {
+  _id?: number;
+}
+
+const TodoInfo = async function ({ _id }: TodoInfoProps = {}) {
   const page = document.createElement("div");
   page.setAttribute("id", "todoInfo");
   page.id = "todoInfo";
@@ -22,10 +27,8 @@ const TodoInfo = async function ({ _id } = {}) {
 
   const content = document.createElement("dl");
 
-  let response;
-
   try {
-    response = await axios(`http://localhost:33088/api/todolist/${_id}`);
+    const response = await axios(`http://localhost:33088/api/todolist/${_id}`);
 
     console.log("todoinfo", response.data.item);
 
@@ -64,13 +67,14 @@ const TodoInfo = async function ({ _id } = {}) {
     modifyButton.appendChild(modifyButtonText);
 
     modifyButton.addEventListener("click", async () => {
-      const updatePage = await TodoUpdate({
-        _id: response.data.item._id,
-        updateTitle: response.data.item.title,
-        updateContent: response.data.item.content,
-        done: response.data.item.done,
-      });
-      document.querySelector("#todoInfo").replaceWith(updatePage);
+      // const updatePage = await TodoUpdate({
+      //   _id: response.data.item._id,
+      //   updateTitle: response.data.item.title,
+      //   updateContent: response.data.item.content,
+      //   done: response.data.item.done,
+      // });
+      // document.querySelector("#todoInfo").replaceWith(updatePage);
+      linkTo(`info?_id=${_id}`);
     });
   } catch (error) {
     console.error("오류가 발생했습니다.");

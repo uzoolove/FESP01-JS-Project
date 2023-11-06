@@ -2,13 +2,21 @@
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import Nav from "../../layout/Nav";
+import axios from "axios";
+
+interface TodoRegist {
+  _id: number;
+  updateTitle: string;
+  updateContent: string;
+  done: boolean;
+}
 
 const TodoUpdate = async function ({
   _id,
   updateTitle,
   updateContent,
   done = false,
-}) {
+}: TodoRegist) {
   const page = document.createElement("div");
   page.setAttribute("id", "update");
 
@@ -90,7 +98,7 @@ const TodoUpdate = async function ({
   form.appendChild(addButton);
 
   addButton.addEventListener("click", async () => {
-    response = await axios
+    await axios
       .patch(`http://localhost:33088/api/todolist/${_id}`, {
         title: titleInput.value,
         content: detailInput.value,
@@ -113,7 +121,7 @@ const TodoUpdate = async function ({
   form.appendChild(deleteButton);
 
   deleteButton.addEventListener("click", async () => {
-    response = await axios
+    await axios
       .delete(`http://localhost:33088/api/todolist/${_id}`)
       .then(function (response) {
         console.log(response);
