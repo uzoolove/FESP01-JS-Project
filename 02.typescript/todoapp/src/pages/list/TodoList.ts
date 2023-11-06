@@ -1,17 +1,11 @@
 import Header from '../../layout/Header';
 import Footer from '../../layout/Footer';
 import { linkTo } from '../../Router';
-<<<<<<< HEAD
-import { getTodoList, onChangeCheckbox, onClickDeleteTodo } from '../../api/todos.api';
-import './TodoList.css'
-import axios from 'axios';
-=======
 import { 
   getTodoList, 
   onChangeCheckbox, 
   onClickDeleteTodo } from '../../api/todos.api';
 
->>>>>>> 04b8bbb3c18cb09f6494dd2637ed1ab1e8fe61b0
 
 
 const TodoList = async (): Promise<HTMLDivElement> => {
@@ -72,11 +66,13 @@ const TodoList = async (): Promise<HTMLDivElement> => {
         onChangeCheckbox(event, checkbox, todo);
       });
 
+
       //NOTE - 할일 상세 정보 페이지로 이동하는 이벤트 리스너 추가
       todoInfoLink.addEventListener('click', (event) => {
         event.preventDefault();
         linkTo(todoInfoLink.getAttribute('href') as string);
       });
+
 
       //NOTE - 할일 삭제 이벤트 리스너 추가
       deleteButton.addEventListener('click', () => {
