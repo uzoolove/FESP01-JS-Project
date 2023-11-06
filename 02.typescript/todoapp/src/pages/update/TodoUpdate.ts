@@ -3,7 +3,7 @@ import Footer from '../../layout/Footer';
 import { linkTo } from '../../Router';
 import { getTodoData, onClickEditTodo } from '../../api/todos.api';
 
-const TodoUpdate = async () => {
+const TodoUpdate = async (): Promise<HTMLDivElement> => {
   //NOTE - URL 매개변수에서 _id 값 추출
   const params = new URLSearchParams(location.search);
   const _id = params.get('_id')!;
@@ -16,14 +16,14 @@ const TodoUpdate = async () => {
   page.setAttribute('id', 'page');
 
   //NOTE - 수정 폼 요소 생성
-  const sumbmitForm = document.createElement('form');
-  const titleInput = document.createElement('input');
-  const contentInput = document.createElement('textarea');
-  const ButtonBox = document.createElement('div');
-  const backButton = document.createElement('button');
-  const backButtonText = document.createTextNode('취소');
-  const submitEditButton = document.createElement('button');
-  const submitEditButtonText = document.createTextNode('수정');
+  const sumbmitForm: HTMLFormElement = document.createElement('form');
+  const titleInput: HTMLInputElement = document.createElement('input');
+  const contentInput: HTMLTextAreaElement = document.createElement('textarea');
+  const ButtonBox: HTMLElement = document.createElement('div');
+  const backButton: HTMLButtonElement = document.createElement('button');
+  const backButtonText: Text = document.createTextNode('취소');
+  const submitEditButton: HTMLButtonElement = document.createElement('button');
+  const submitEditButtonText: Text = document.createTextNode('수정');
 
   //NOTE - 요소에 속성 및 클래스 추가
   sumbmitForm.setAttribute('id', 'regist-form');
@@ -55,12 +55,12 @@ const TodoUpdate = async () => {
   page.appendChild(Footer());
 
   //NOTE - 폼 제출 이벤트 리스너 추가
-  sumbmitForm.addEventListener('submit', (event) => {
+  sumbmitForm.addEventListener('submit', (event: Event) => {
     onClickEditTodo(event, titleInput, contentInput, _id);
   });
 
   //NOTE - 취소 버튼 클릭 시 이벤트 설정
-  backButton.addEventListener('click', () => {
+  backButton.addEventListener('click', (): void => {
     if (confirm('취소 하고 상세 페이지로 이동합니다')) {
       linkTo(backButton.getAttribute('href')!);
     }

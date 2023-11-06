@@ -2,7 +2,6 @@ import Header from '../../layout/Header';
 import Footer from '../../layout/Footer';
 import { linkTo } from '../../Router';
 import { getTodoData, onClickDeleteInInfo } from '../../api/todos.api';
-import './todoInfo.css';
 
 const TodoInfo = async () => {
   //NOTE - 페이지 요소 생성
@@ -58,23 +57,23 @@ const TodoInfo = async () => {
       const substituteKeyName = substituteKeyNames[key as keyof typeof substituteKeyNames];
 
       if (substituteKeyName) {
-        const detailRow = document.createElement('div');
+        const detailRow: HTMLElement = document.createElement('div');
         detailRow.setAttribute('id', 'detail-row');
 
-        const detailTitleBox = document.createElement('div');
+        const detailTitleBox: HTMLElement = document.createElement('div');
         detailTitleBox.setAttribute('class', 'detail-title-content');
 
-        const detailTitle = document.createElement('h3');
-        const titleText = document.createTextNode(`${substituteKeyName}`);
+        const detailTitle: HTMLHeadingElement = document.createElement('h3');
+        const titleText: Text = document.createTextNode(`${substituteKeyName}`);
 
         detailTitle.appendChild(titleText);
         detailTitleBox.appendChild(detailTitle);
 
-        const detailContentBox = document.createElement('div');
+        const detailContentBox: HTMLElement = document.createElement('div');
         detailContentBox.setAttribute('class', 'detail-title-content contentText');
 
-        const detailContent = document.createElement('span');
-        const contentText = document.createTextNode(`${item}`);
+        const detailContent: HTMLSpanElement = document.createElement('span');
+        const contentText: Text = document.createTextNode(`${item}`);
 
         detailContent.appendChild(contentText);
         detailContentBox.appendChild(detailContent);
@@ -87,7 +86,7 @@ const TodoInfo = async () => {
   };
 
   //NOTE - 할일 데이터 가져오기 및 상세 정보 렌더링
-  const todoData = await getTodoData(_id);
+  const todoData: TodoItem = await getTodoData(_id);
   await toDoDetailRender(todoData);
 
   //NOTE - 버튼에 이벤트 리스너 추가

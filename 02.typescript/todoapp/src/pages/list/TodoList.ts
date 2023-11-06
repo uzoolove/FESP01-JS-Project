@@ -1,29 +1,24 @@
 import Header from '../../layout/Header';
 import Footer from '../../layout/Footer';
 import { linkTo } from '../../Router';
-import { 
-  getTodoList, 
-  onChangeCheckbox, 
-  onClickDeleteTodo } from '../../api/todos.api';
-
-
+import { getTodoList, onChangeCheckbox, onClickDeleteTodo } from '../../api/todos.api';
 
 const TodoList = async (): Promise<HTMLDivElement> => {
   //NOTE - 페이지 요소 생성
-  const page = document.createElement('div');
+  const page: HTMLDivElement = document.createElement('div');
   page.setAttribute('id', 'page');
 
   //NOTE - 내용 요소 생성
-  const content = document.createElement('div');
+  const content: HTMLDivElement = document.createElement('div');
   content.setAttribute('id', 'content');
 
   //NOTE - 할일 목록을 담을 ul 요소 생성
-  const ul = document.createElement('ul');
+  const ul: HTMLUListElement = document.createElement('ul');
   ul.setAttribute('class', 'todo-list');
 
   //NOTE - 할일 등록 버튼 생성
-  const registButton = document.createElement('button');
-  const buttonTitle = document.createTextNode('+');
+  const registButton: HTMLButtonElement = document.createElement('button');
+  const buttonTitle: Text = document.createTextNode('+');
   registButton.setAttribute('id', 'regist-button');
 
   try {
@@ -32,24 +27,25 @@ const TodoList = async (): Promise<HTMLDivElement> => {
 
     //NOTE - 할일 목록을 순회하며 요소 생성
     response.data?.items.map((todo: TodoItem) => {
-
-      const li = document.createElement('li');
-      const checkbox = document.createElement('input');
-      const todoInfoLink = document.createElement('h3');
-      const title = document.createTextNode(todo.title);
+      const li: HTMLLIElement = document.createElement('li');
+      const checkbox: HTMLInputElement = document.createElement('input');
+      const todoInfoLinkHeading: HTMLHeadingElement = document.createElement('h3');
+      const todoInfoLink: HTMLAnchorElement = document.createElement('a');
+      todoInfoLinkHeading.append(todoInfoLink);
+      const title: Text = document.createTextNode(todo.title);
       todoInfoLink.appendChild(title);
-      const deleteButton = document.createElement('i');
+      const deleteButton: HTMLElement = document.createElement('i');
 
       //NOTE - 요소에 속성 및 클래스 추가
-      li.setAttribute('id', `${ todo._id }`);
+      li.setAttribute('id', `${todo._id}`);
       checkbox.setAttribute('type', 'checkbox');
-      checkbox.setAttribute('id', `checkbox_${ todo._id }`);
-      todoInfoLink.setAttribute('href', `info?_id=${ todo._id }`);
+      checkbox.setAttribute('id', `checkbox_${todo._id}`);
+      todoInfoLink.setAttribute('href', `info?_id=${todo._id}`);
       deleteButton.setAttribute('class', 'fa-regular fa-trash-can');
 
       //NOTE - 요소 구성
       li.appendChild(checkbox);
-      li.appendChild(todoInfoLink);
+      li.appendChild(todoInfoLinkHeading);
       li.appendChild(deleteButton);
       ul.appendChild(li);
 
@@ -66,20 +62,17 @@ const TodoList = async (): Promise<HTMLDivElement> => {
         onChangeCheckbox(event, checkbox, todo);
       });
 
-
       //NOTE - 할일 상세 정보 페이지로 이동하는 이벤트 리스너 추가
       todoInfoLink.addEventListener('click', (event) => {
         event.preventDefault();
         linkTo(todoInfoLink.getAttribute('href') as string);
       });
 
-
       //NOTE - 할일 삭제 이벤트 리스너 추가
       deleteButton.addEventListener('click', () => {
         onClickDeleteTodo(todo._id, li);
       });
     });
-
 
     //NOTE - 할일 등록 버튼 클릭 시 이벤트 설정
     registButton.addEventListener('click', () => {
