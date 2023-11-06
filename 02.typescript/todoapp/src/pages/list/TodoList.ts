@@ -1,8 +1,9 @@
 // 할일 목록
+import './todolist.css';
+import axios from 'axios';
 import Header from '../../layout/Header';
 import Footer from '../../layout/Footer';
 import {linkTo} from '../../Router';
-
 
 const TodoList = async function(){
   const page = document.createElement('div');
@@ -12,7 +13,7 @@ const TodoList = async function(){
   content.setAttribute('id', 'content');
   let response;
   try{    
-    response = await axios('http://localhost:33088/api/todolist');
+    response = await axios<TodoListResponse>('http://localhost:33088/api/todolist');
 
     const ul = document.createElement('ul');
     ul.setAttribute('class', 'todolist');
@@ -25,7 +26,7 @@ const TodoList = async function(){
       todoInfoLink.addEventListener('click', function(event){
         // 브라우저의 기본 동작 취소(<a> 태그 동작 안하도록)
         event.preventDefault();
-        linkTo(todoInfoLink.getAttribute('href'));
+        linkTo(todoInfoLink.getAttribute('href')!);
       });
 
       todoInfoLink.appendChild(title);
