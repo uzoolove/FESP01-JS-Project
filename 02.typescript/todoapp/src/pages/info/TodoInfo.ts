@@ -5,11 +5,13 @@ import Nav from "../../layout/Nav";
 import axios from "axios";
 import { linkTo } from "../../Router";
 
-interface TodoInfoProps {
-  _id?: number;
-}
+const TodoInfo = async function (): Promise<HTMLElement> {
+  // 쿼리스트링 값 가져오기
+  const searchParam = (key: string): string | null => {
+    return new URLSearchParams(location.search).get(key);
+  }
+  const _id = searchParam('_id');
 
-const TodoInfo = async function ({ _id }: TodoInfoProps = {}) {
   const page = document.createElement("div");
   page.setAttribute("id", "todoInfo");
   page.id = "todoInfo";
@@ -28,9 +30,7 @@ const TodoInfo = async function ({ _id }: TodoInfoProps = {}) {
   const content = document.createElement("dl");
 
   try {
-    const response = await axios(`http://localhost:33088/api/todolist/${_id}`);
-
-    console.log("todoinfo", response.data.item);
+    const response = (await axios<TodoResponse>(`http://localhost:33088/api/todolist/${_id}`));
 
     const title = document.createElement("dt");
     const titleText = document.createTextNode("제목");
@@ -74,7 +74,7 @@ const TodoInfo = async function ({ _id }: TodoInfoProps = {}) {
       //   done: response.data.item.done,
       // });
       // document.querySelector("#todoInfo").replaceWith(updatePage);
-      linkTo(`info?_id=${_id}`);
+      linkTo(`update?_id=${_id}`);
     });
   } catch (error) {
     console.error("오류가 발생했습니다.");
