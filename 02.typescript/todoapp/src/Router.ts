@@ -35,14 +35,12 @@ async function render(): Promise<void> {
   }
 }
 
-window.addEventListener("popstate", (e) => {
-  console.log(e);
-  render();
+window.addEventListener("popstate", async () => {
+  await render();
 });
 
 export function linkTo(url: string): void {
-  const state = { page: url };
-  history.pushState(state, "todo", url);
+  history.pushState({}, "todo", url);
   render();
 }
 
