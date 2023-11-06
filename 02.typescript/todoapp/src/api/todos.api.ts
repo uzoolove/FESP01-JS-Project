@@ -1,16 +1,22 @@
 import { linkTo } from "../Router";
-import axios from "axios";
+import axios from "../../node_modules/axios/index";
 
 const BASE_URL = "http://localhost:33088";
 
 //NOTE - 할일 목록을 가져오는 함수
 export const getTodoList = async () => {
-  const response = await axios<TodoListResponse>(`${BASE_URL}/api/todolist`);
+  const response = 
+  await axios<TodoListResponse>(`${ BASE_URL }/api/todolist`);
+
   return response;
 };
 
 //NOTE - 할일 등록을 처리하는 함수
-export const onSubmitTodoRegister = async (event: any, titleInput: any, contentInput: any) => {
+export const onSubmitTodoRegister = async (
+  event: Event, 
+  titleInput: HTMLInputElement, 
+  contentInput: HTMLTextAreaElement) => {
+
   event.preventDefault();
 
   if (titleInput.value === "" || contentInput.value === "") {
@@ -26,7 +32,8 @@ export const onSubmitTodoRegister = async (event: any, titleInput: any, contentI
 
   try {
     if (confirm("등록 하시겠습니까?")) {
-      const response = await axios.post(`${BASE_URL}/api/todolist`, body);
+      const response = 
+      await axios.post(`${ BASE_URL }/api/todolist`, body);
 
       if (response) {
         linkTo("/");
@@ -38,24 +45,27 @@ export const onSubmitTodoRegister = async (event: any, titleInput: any, contentI
 };
 
 //NOTE - 체크박스 상태 변경을 처리하는 함수
-export const onChangeCheckbox = async (event: any, checkbox: any, todo: any) => {
-  console.log(typeof event, typeof checkbox, typeof todo);
-  const isChecked = checkbox.checked;
+export const onChangeCheckbox = async (
+  event: Event, checkbox: HTMLInputElement, todo: TodoItem): Promise<void> => {
+
+    const isChecked: boolean = checkbox.checked;
 
   try {
-    const response = await axios.patch(`${BASE_URL}/api/todolist/${todo._id}`, { done: isChecked });
+    const response = 
+    await axios.patch(`${ BASE_URL }/api/todolist/${ todo._id }`, { done: isChecked });
 
     if (response) {
-      const NEXT_SIBLING = event.target.nextSibling;
+      const target = event.target as HTMLInputElement;
+      const NEXT_SIBLING = target.nextSibling as HTMLElement;
 
       todo.done = isChecked;
 
       if (isChecked) {
         todo.done = false;
-        NEXT_SIBLING.classList.add("line-through");
+        (NEXT_SIBLING as HTMLElement)?.classList.add("line-through");
       } else {
         todo.done = true;
-        NEXT_SIBLING.classList.remove("line-through");
+        (NEXT_SIBLING as HTMLElement)?.classList.remove("line-through");
       }
     }
   } catch (error) {
@@ -64,11 +74,13 @@ export const onChangeCheckbox = async (event: any, checkbox: any, todo: any) => 
 };
 
 //NOTE - TodoList 화면에서 할일 삭제를 처리하는 함수
-export const onClickDeleteTodo = async (todoId: any, li: any) => {
-  console.log(typeof todoId, typeof li);
+export const onClickDeleteTodo = async (
+  todoId: number, li: HTMLElement): Promise<void> => {
+
   try {
     if (confirm("정말 삭제 하시겠습니까?")) {
-      const response = await axios.delete(`${BASE_URL}/api/todolist/${todoId}`);
+      const response = 
+      await axios.delete<TodoListResponse>(`${ BASE_URL }/api/todolist/${ todoId }`);
 
       if (response) {
         li.remove();
@@ -109,6 +121,7 @@ export const onClickDeleteInInfo = async (todoId: string) => {
 
 //NOTE - 할일 수정을 처리하는 함수
 export const onClickEditTodo = async (event: any, titleInput: any, contentInput: any, todoId: any, backButton: any) => {
+
   event.preventDefault();
 
   if (titleInput.value === "" || contentInput.value === "") {
@@ -132,7 +145,7 @@ export const onClickEditTodo = async (event: any, titleInput: any, contentInput:
       const response = await axios.patch(`${BASE_URL}/api/todolist/${todoId}`, body);
 
       if (response) {
-        linkTo(backButton.getAttribute("href"));
+        window.history.back();
       }
     }
   } catch (error) {

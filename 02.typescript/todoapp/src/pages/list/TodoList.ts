@@ -66,11 +66,13 @@ const TodoList = async (): Promise<HTMLDivElement> => {
         onChangeCheckbox(event, checkbox, todo);
       });
 
+
       //NOTE - 할일 상세 정보 페이지로 이동하는 이벤트 리스너 추가
       todoInfoLink.addEventListener('click', (event) => {
         event.preventDefault();
         linkTo(todoInfoLink.getAttribute('href') as string);
       });
+
 
       //NOTE - 할일 삭제 이벤트 리스너 추가
       deleteButton.addEventListener('click', () => {
