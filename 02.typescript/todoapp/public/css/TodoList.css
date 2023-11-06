@@ -1,0 +1,88 @@
+/* ul 태그 */
+#content {
+  height: 435px;
+  padding: 15px 10px;
+  overflow-y: scroll;
+  box-shadow: 0px 2px 10px -1px rgba(178, 166, 166, 0.688);
+}
+
+/* li 태그 */
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  list-style: none;
+  box-shadow: 0px 5px 3px 1px rgba(224, 220, 220, 0.688);
+}
+
+li:hover {
+  background-color: #e8d9ee;
+  box-shadow: 0px 0px 8px #f1eaf3;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+/* 체크 박스 */
+input[type = 'checkbox'] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 15px ;
+  border-radius: 15px;
+  border: 2px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type = 'checkbox']:hover {
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="checkbox"]:checked {
+  border-color: #c081d9;
+  background-color: #c081d9;
+}
+
+/* 체크 박스 클릭하면 선 긋기*/
+.line-through {
+  text-decoration: line-through;
+  opacity: 0.3;
+}
+
+/* 삭제 버튼 */
+.fa-trash-can {
+  font-size: 23px;
+}
+
+.fa-trash-can:hover {
+  color: rgb(214, 79, 79);
+  transition: all 0.2s ease-in-out;
+}
+
+/* 등록 버튼 */
+#regist-button {
+  position: absolute;
+  top: 86%;
+  right: 3%;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: #c081d9;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 40px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.2) -4px 9px 25px -5px;
+}
+
+#regist-button:hover {
+  background-color: #9a3bbf;
+  transition: all 0.2s ease-in-out;
+}
