@@ -107,14 +107,14 @@ npm run dev
 ```
 
 ### index.js 파일 수정
-#### css 파일 import
-```
-import './index.css';
-```
 
 #### 파일 확장자 변경
 * src/index.js -> src/index.ts로 수정
 
+#### css 파일 import
+```
+import './index.css';
+```
 #### import 구문 수정
 * 점진적으로 .js 파일을 .ts로 변경할 예정이므로 둘다 적용 가능하도록 import 구문에서 모듈의 확장자를 제거
 ```
