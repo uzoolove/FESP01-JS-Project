@@ -1,7 +1,7 @@
 import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import { linkTo } from "../../Router";
-import { getTodoData, onClickDeleteInInfo } from "../../api/todos.api.js";
+import { getTodoData, onClickDeleteInInfo } from "../../api/todos.api";
 
 const TodoInfo = async () => {
   //NOTE - 페이지 요소 생성

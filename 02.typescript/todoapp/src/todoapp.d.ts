@@ -1,3 +1,5 @@
+
+//NOTE - 정보
 interface TodoItem {
   _id: number;
   title: string;
@@ -7,6 +9,7 @@ interface TodoItem {
   updatedAt: string;
 }
 
+//NOTE - 목록 조회 응답 
 interface TodoListResponse {
   ok: number;
   items: TodoItem[];
@@ -18,6 +21,7 @@ interface TodoListResponse {
   };
 }
 
+//NOTE - 상세 조회 응답
 interface TodoResponse {
   ok: number;
   item: TodoItem;

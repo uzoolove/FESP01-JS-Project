@@ -1,4 +1,5 @@
-import { linkTo } from "../Router.js";
+import { linkTo } from "../Router";
+import axios from 'axios';
 
 const BASE_URL = "http://localhost:33088";
 

@@ -1,7 +1,7 @@
-import Header from '../../layout/Header.js';
-import Footer from '../../layout/Footer.js';
-import { linkTo } from '../../Router.js';
-import { getTodoList, onChangeCheckbox, onClickDeleteTodo } from '../../api/todos.api.js';
+import Header from '../../layout/Header';
+import Footer from '../../layout/Footer';
+import { linkTo } from '../../Router';
+import { getTodoList, onChangeCheckbox, onClickDeleteTodo } from '../../api/todos.api';
 
 
 
