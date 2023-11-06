@@ -1,4 +1,4 @@
-import { linkTo } from "../js/Router.js";
+import { linkTo } from "./Router.ts";
 
 //NOTE - 뒤로가기 
 export const onClickBackButton = () => {
