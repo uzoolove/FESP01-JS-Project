@@ -25,6 +25,7 @@ async function render(){
   document.querySelector('#page').replaceWith(page);
 }
 
+// 뒤로가기, 앞으로가기 버튼 클릭시 발생하는 이벤트
 window.addEventListener('popstate', render);
 
 export function linkTo(url){
