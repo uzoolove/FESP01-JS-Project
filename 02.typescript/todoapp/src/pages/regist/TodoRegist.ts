@@ -44,12 +44,12 @@ const TodoRegist = (): HTMLElement => {
   page.appendChild(RegistForm);
   page.appendChild(Footer());
   
-    //NOTE - 폼 제출 이벤트 리스너 추가
+    //NOTE - 폼 제출 이벤트 리스너 추가.
   RegistForm.addEventListener('submit', (event: Event) => {
     onSubmitTodoRegister(event, titleInput, contentInput);
   });
   
-    //NOTE - 취소 버튼 클릭 시 이벤트 설정
+    //NOTE - 취소 버튼 클릭 시 이벤트 설정.
   backButton.addEventListener('click', (): void => {
     if (confirm('취소 하시겠습니까?')) {
       linkTo('/');
