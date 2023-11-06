@@ -1,11 +1,14 @@
 import Header from '../../layout/Header';
 import Footer from '../../layout/Footer';
 import { linkTo } from '../../Router';
-import { getTodoList, onChangeCheckbox, onClickDeleteTodo } from '../../api/todos.api';
+import { 
+  getTodoList, 
+  onChangeCheckbox, 
+  onClickDeleteTodo } from '../../api/todos.api';
 
 
 
-const TodoList = async () => {
+const TodoList = async (): Promise<HTMLDivElement> => {
   //NOTE - 페이지 요소 생성
   const page = document.createElement('div');
   page.setAttribute('id', 'page');
@@ -28,7 +31,7 @@ const TodoList = async () => {
     const response = await getTodoList();
 
     //NOTE - 할일 목록을 순회하며 요소 생성
-    response.data?.items.map((todo) => {
+    response.data?.items.map((todo: TodoItem) => {
 
       const li = document.createElement('li');
       const checkbox = document.createElement('input');
@@ -66,7 +69,7 @@ const TodoList = async () => {
       //NOTE - 할일 상세 정보 페이지로 이동하는 이벤트 리스너 추가
       todoInfoLink.addEventListener('click', (event) => {
         event.preventDefault();
-        linkTo(todoInfoLink.getAttribute('href'));
+        linkTo(todoInfoLink.getAttribute('href') as string);
       });
 
       //NOTE - 할일 삭제 이벤트 리스너 추가
@@ -78,7 +81,7 @@ const TodoList = async () => {
 
     //NOTE - 할일 등록 버튼 클릭 시 이벤트 설정
     registButton.addEventListener('click', () => {
-      return linkTo('/regist');
+      return linkTo('/regist' as string);
     });
   } catch (error) {
     console.log(error);
