@@ -3,6 +3,8 @@ import Header from "../../layout/Header";
 import Footer from "../../layout/Footer";
 import Nav from "../../layout/Nav";
 import axios from "axios";
+import { linkTo } from "../../Router";
+
 
 const TodoUpdate = async function (): Promise<HTMLElement> {
   // 쿼리스트링 값 가져오기
@@ -93,19 +95,26 @@ const TodoUpdate = async function (): Promise<HTMLElement> {
   // 수정하기 버튼
   const addButton = document.createElement("button");
   addButton.className = "addButton";
+  addButton.type = "button";
   const addText = document.createTextNode("수정 완료하기");
   // addText.className = "addText";
   addButton.appendChild(addText);
   form.appendChild(addButton);
 
   try {
-    const body = {
-      title: titleInput.value,
-      content: detailInput.value,
-      done: checkInput.checked,
-    }
     addButton?.addEventListener("click", async() => {
-      await axios.patch<TodoResponse>(`http://localhost:33088/api/todolist/${_id}`, body)});
+      const body = {
+        title: titleInput.value,
+        content: detailInput.value,
+        done: checkInput.checked,
+      }
+      await axios.patch<TodoResponse>(`http://localhost:33088/api/todolist/${_id}`, body).then((response) => {
+        console.log(response);
+        linkTo(`info?_id=${_id}`);
+      }).catch((error) => {
+        console.log(error);
+      })
+    });
   } catch(error) {
     console.error(error);
   }
@@ -113,6 +122,7 @@ const TodoUpdate = async function (): Promise<HTMLElement> {
   // 삭제하기 버튼
   const deleteButton = document.createElement("button");
   deleteButton.className = "deleteButton";
+  deleteButton.type = "button";
   const deleteText = document.createTextNode("삭제하기");
   // deleteText.className = "deleteText";
   deleteButton.appendChild(deleteText);
@@ -123,6 +133,7 @@ const TodoUpdate = async function (): Promise<HTMLElement> {
       .delete(`http://localhost:33088/api/todolist/${_id}`)
       .then(function (response) {
         console.log(response);
+        linkTo(`/`);
       })
       .catch(function (error) {
         console.log(error);
