@@ -1,0 +1,6 @@
+h1 > img, h1 > span{
+  vertical-align: middle;
+}
+h1 > img{
+  margin-right: 10px;
+}
