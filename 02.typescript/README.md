@@ -200,6 +200,11 @@ npm i axios
 import axios from 'axios';
 ```
 
+#### index.html에서 axios 제거
+```
+<script src="https://unpkg.com/axios@1.6.0/dist/axios.min.js"></script>
+```
+
 #### axios 요청에 타입 추가
 ```
 response = await axios<TodoListResponse>('http://localhost:33088/api/todolist');
