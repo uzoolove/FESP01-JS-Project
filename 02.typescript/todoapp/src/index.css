@@ -1,16 +1,11 @@
 @import '/src/pages/info/todoInfo.css';
-@import '/src/pages/list/TodoList.css';
+@import '/src/pages/list/todoList.css';
 @import '/src/pages/regist/todoRegist.css';
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
-  color: unset;
 }
 
 /* Header */

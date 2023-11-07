@@ -9,6 +9,13 @@ interface TodoItem {
   updatedAt: string;
 }
 
+//NOTE - 등록, 수정할때 
+interface TodoRegist {
+  title: string,
+  content: string,
+  done?: boolean
+}
+
 //NOTE - 목록 조회 응답 
 interface TodoListResponse {
   ok: number;
