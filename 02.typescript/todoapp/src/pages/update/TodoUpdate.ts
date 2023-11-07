@@ -6,24 +6,40 @@ import { getTodoData, onClickEditTodo } from '../../api/todos.api';
 const TodoUpdate = async (): Promise<HTMLDivElement> => {
   //NOTE - URL 매개변수에서 _id 값 추출
   const params = new URLSearchParams(location.search);
-  const _id = params.get('_id')!;
+  const _id: number = parseInt(params.get('_id')!);
 
   //NOTE - 특정 할일의 정보 가져오기
-  const todoDetail = await getTodoData(_id);
+  const todoDetail = await getTodoData(_id) as TodoItem;
 
   //NOTE - 페이지 요소 생성
   const page = document.createElement('div');
   page.setAttribute('id', 'page');
 
   //NOTE - 수정 폼 요소 생성
-  const sumbmitForm: HTMLFormElement = document.createElement('form');
-  const titleInput: HTMLInputElement = document.createElement('input');
-  const contentInput: HTMLTextAreaElement = document.createElement('textarea');
-  const ButtonBox: HTMLElement = document.createElement('div');
-  const backButton: HTMLButtonElement = document.createElement('button');
-  const backButtonText: Text = document.createTextNode('취소');
-  const submitEditButton: HTMLButtonElement = document.createElement('button');
-  const submitEditButtonText: Text = document.createTextNode('수정');
+  const sumbmitForm: HTMLFormElement 
+  = document.createElement('form');
+
+  const titleInput: HTMLInputElement 
+  = document.createElement('input');
+
+  const contentInput: HTMLTextAreaElement 
+  = document.createElement('textarea');
+
+  const ButtonBox: HTMLElement 
+  = document.createElement('div');
+
+  const backButton: HTMLButtonElement 
+  = document.createElement('button');
+
+  const backButtonText: Text 
+  = document.createTextNode('취소');
+
+  const submitEditButton: HTMLButtonElement 
+  = document.createElement('button');
+
+  const submitEditButtonText: Text 
+  = document.createTextNode('수정');
+
 
   //NOTE - 요소에 속성 및 클래스 추가
   sumbmitForm.setAttribute('id', 'regist-form');
@@ -35,7 +51,7 @@ const TodoUpdate = async (): Promise<HTMLDivElement> => {
   ButtonBox.setAttribute('class', 'button-area');
   backButton.setAttribute('type', 'button');
   backButton.setAttribute('class', 'back-button');
-  backButton.setAttribute('href', `info?_id=${_id}`);
+  backButton.setAttribute('href', `info?_id=${ _id }`);
 
   submitEditButton.setAttribute('class', 'submit-button');
   submitEditButton.setAttribute('type', 'submit');
@@ -62,7 +78,7 @@ const TodoUpdate = async (): Promise<HTMLDivElement> => {
   //NOTE - 취소 버튼 클릭 시 이벤트 설정
   backButton.addEventListener('click', (): void => {
     if (confirm('취소 하고 상세 페이지로 이동합니다')) {
-      linkTo(backButton.getAttribute('href')!);
+      linkTo(backButton.getAttribute('href') as string);
     }
   });
 

@@ -3,33 +3,54 @@ import Footer from '../../layout/Footer';
 import { linkTo } from '../../Router';
 import { getTodoData, onClickDeleteInInfo } from '../../api/todos.api';
 
-const TodoInfo = async () => {
+const TodoInfo = async (): Promise<HTMLDivElement> => {
   //NOTE - 페이지 요소 생성
-  const page = document.createElement('div');
+  const page: HTMLDivElement 
+  = document.createElement('div');
   page.setAttribute('id', 'page');
 
   //NOTE - URL 매개변수에서 _id 값 추출
-  const params = new URLSearchParams(location.search);
-  const _id = params.get('_id')!;
+  const params: URLSearchParams 
+  = new URLSearchParams(location.search);
+
+  const _id: number = parseInt(params.get('_id')!);
 
   //NOTE - 페이지 내용 요소 생성
-  const content = document.createElement('div');
-  const detailContainer = document.createElement('div');
-  const detailTitleArea = document.createElement('div');
-  const detailContentArea = document.createElement('div');
-  const buttonArea = document.createElement('div');
+  const content: HTMLDivElement 
+  = document.createElement('div');
+
+  const detailContainer: HTMLDivElement 
+  = document.createElement('div');
+
+  const detailTitleArea: HTMLDivElement 
+  = document.createElement('div');
+
+  const detailContentArea: HTMLDivElement 
+  = document.createElement('div');
+
+  const buttonArea: HTMLDivElement 
+  = document.createElement('div');
 
   //NOTE - 뒤로가기 버튼 생성
-  const backButton = document.createElement('button');
-  const backButtonText = document.createTextNode('뒤로가기');
+  const backButton: HTMLButtonElement 
+  = document.createElement('button');
+
+  const backButtonText: Text 
+  = document.createTextNode('뒤로가기');
 
   //NOTE - 수정하기 버튼 생성
-  const toEditButton = document.createElement('button');
-  const toEditButtonText = document.createTextNode('수정하기');
+  const toEditButton: HTMLButtonElement 
+  = document.createElement('button');
+
+  const toEditButtonText: Text 
+  = document.createTextNode('수정하기');
 
   //NOTE - 삭제 버튼 생성
-  const deleteButton = document.createElement('button');
-  const deleteButtonText = document.createTextNode('삭제');
+  const deleteButton: HTMLButtonElement 
+  = document.createElement('button');
+
+  const deleteButtonText: Text 
+  = document.createTextNode('삭제');
 
   //NOTE - 요소에 클래스 및 속성 추가
   content.setAttribute('class', 'todo-detail-container');
@@ -43,7 +64,7 @@ const TodoInfo = async () => {
   toEditButton.setAttribute('class', 'submit-button');
 
   //NOTE - 할일 상세 정보 렌더링 함수
-  const toDoDetailRender = async (data: TodoItem) => {
+  const toDoDetailRender = async (todo: TodoItem): Promise<void> => {
     //NOTE - 키 이름 대체 매핑 객체
     const substituteKeyNames: Omit<TodoItem, 'done' | '_id'> = {
       title: '제목',
@@ -53,27 +74,35 @@ const TodoInfo = async () => {
     };
 
     //NOTE - 데이터 객체를 순회하며 상세 정보 행 생성
-    for (const [key, item] of Object.entries(data)) {
-      const substituteKeyName = substituteKeyNames[key as keyof typeof substituteKeyNames];
+    for (const [key, item] of Object.entries(todo)) {
+      const substituteKeyName: string 
+      = substituteKeyNames[key as keyof typeof substituteKeyNames];
 
       if (substituteKeyName) {
-        const detailRow: HTMLElement = document.createElement('div');
+
+        const detailRow: HTMLElement 
+        = document.createElement('div');
         detailRow.setAttribute('id', 'detail-row');
 
-        const detailTitleBox: HTMLElement = document.createElement('div');
+        const detailTitleBox: HTMLElement 
+        = document.createElement('div');
         detailTitleBox.setAttribute('class', 'detail-title-content');
 
-        const detailTitle: HTMLHeadingElement = document.createElement('h3');
-        const titleText: Text = document.createTextNode(`${substituteKeyName}`);
+        const detailTitle: HTMLHeadingElement 
+        = document.createElement('h3');
+        const titleText: Text = document.createTextNode(`${ substituteKeyName }`);
 
         detailTitle.appendChild(titleText);
         detailTitleBox.appendChild(detailTitle);
 
-        const detailContentBox: HTMLElement = document.createElement('div');
+        const detailContentBox: HTMLElement 
+        = document.createElement('div');
         detailContentBox.setAttribute('class', 'detail-title-content contentText');
 
-        const detailContent: HTMLSpanElement = document.createElement('span');
-        const contentText: Text = document.createTextNode(`${item}`);
+        const detailContent: HTMLSpanElement 
+        = document.createElement('span');
+        const contentText: Text = document.createTextNode(`${ item }`);
+
 
         detailContent.appendChild(contentText);
         detailContentBox.appendChild(detailContent);
@@ -86,7 +115,7 @@ const TodoInfo = async () => {
   };
 
   //NOTE - 할일 데이터 가져오기 및 상세 정보 렌더링
-  const todoData: TodoItem = await getTodoData(_id);
+  const todoData = await getTodoData(_id) as TodoItem;
   await toDoDetailRender(todoData);
 
   //NOTE - 버튼에 이벤트 리스너 추가
@@ -107,7 +136,7 @@ const TodoInfo = async () => {
 
   //NOTE - 버튼 클릭 시 동작 설정
   backButton.addEventListener('click', () => linkTo('/'));
-  toEditButton.addEventListener('click', () => linkTo(`/update?_id=${_id}`));
+  toEditButton.addEventListener('click', () => linkTo(`/update?_id=${ _id }`));
   deleteButton.addEventListener('click', () => {
     onClickDeleteInInfo(_id);
   });
