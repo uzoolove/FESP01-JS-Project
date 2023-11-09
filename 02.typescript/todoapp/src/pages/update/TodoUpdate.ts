@@ -6,7 +6,7 @@ import { getTodoData, onClickEditTodo } from '../../api/todos.api';
 const TodoUpdate = async (): Promise<HTMLDivElement> => {
   //NOTE - URL 매개변수에서 _id 값 추출
   const params = new URLSearchParams(location.search);
-  const _id: number = parseInt(params.get('_id')!);
+  const _id: string = params.get('_id')!;
 
   //NOTE - 특정 할일의 정보 가져오기
   const todoDetail = await getTodoData(_id) as TodoItem;

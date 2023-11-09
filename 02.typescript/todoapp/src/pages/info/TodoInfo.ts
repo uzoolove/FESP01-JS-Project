@@ -13,7 +13,7 @@ const TodoInfo = async (): Promise<HTMLDivElement> => {
   const params: URLSearchParams 
   = new URLSearchParams(location.search);
 
-  const _id: number = parseInt(params.get('_id')!);
+  const _id: string = params.get('_id')!;
 
   //NOTE - 페이지 내용 요소 생성
   const content: HTMLDivElement 
