@@ -121,7 +121,7 @@ export const onClickDeleteTodo = async (
 
 
 //NOTE - 할일의 상세 정보 데이터를 가져오는 함수
-export const getTodoData = async (todoId: number):Promise<TodoItem | undefined> => {
+export const getTodoData = async (todoId: string):Promise<TodoItem | undefined> => {
   try {
     const response = 
     await axios.get(
@@ -140,7 +140,7 @@ export const getTodoData = async (todoId: number):Promise<TodoItem | undefined> 
 
 
 //NOTE - 할일 삭제를 처리하는 함수 (상세 정보 페이지에서 사용)
-export const onClickDeleteInInfo = async (todoId: number): Promise<void> => {
+export const onClickDeleteInInfo = async (todoId: string): Promise<void> => {
 
   try {
     if (confirm('삭제 하시겠습니까?')) {
@@ -164,7 +164,7 @@ export const onClickEditTodo = async (
   event: Event,
   titleInput: HTMLInputElement,
   contentInput: HTMLTextAreaElement,
-  todoId: number
+  todoId: string
 ): Promise<void> => {
 
   event.preventDefault();
