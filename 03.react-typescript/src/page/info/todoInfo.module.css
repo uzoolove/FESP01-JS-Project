@@ -1,0 +1,34 @@
+.detailContainer {
+  padding: 0px 50px;
+}
+
+.detailArea {
+  width: 100%;
+  height: 475px;
+  max-height: 475px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  white-space: pre-wrap;
+}
+
+.detailRow {
+  padding: 20px 0px;
+}
+
+.detailTitleContentBox {
+  padding-top: 14px;
+}
+
+.title {
+  color: #9a3bbf;
+  opacity: 0.6;
+}
+
+.content {
+  font-size: 19px;
+  font-weight: 450;
+}
+
+
+

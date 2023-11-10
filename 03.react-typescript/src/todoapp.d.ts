@@ -8,8 +8,6 @@ interface TodoItem {
   updatedAt: string;
 }
 
-//NOTE - 등록, 수정할때
-
 //NOTE - 목록 조회 응답
 interface TodoListResponse {
   ok: number;
