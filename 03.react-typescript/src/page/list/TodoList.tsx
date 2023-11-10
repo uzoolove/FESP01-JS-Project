@@ -62,6 +62,25 @@ const TodoList = (): JSX.Element => {
   }
 
 
+  const onClickDeleteTodo = async (todoId: number): Promise<void> => {
+    try {
+      const isConfirmed: boolean = window.confirm("정말로 삭제하시겠습니까?");
+
+      if (isConfirmed) {
+        const response = 
+        await axios.delete(`${ BASE_URL }/api/todoList/${ todoId }`);
+
+        if (response.status === 200) {
+          await getTodoList(); 
+        }
+      }
+    } 
+    catch (error) {
+      console.error(error);
+    }
+  }
+
+
   useEffect(() => {
     getTodoList();
   }, []);
@@ -96,7 +115,8 @@ const TodoList = (): JSX.Element => {
           </h3>
           <FontAwesomeIcon 
           icon = { faTrashCan }
-          className = { styles.faTrashCan } />
+          className = { styles.faTrashCan } 
+          onClick = { () => onClickDeleteTodo(TODO_ID) }/>
         </li>
         );
       })}
