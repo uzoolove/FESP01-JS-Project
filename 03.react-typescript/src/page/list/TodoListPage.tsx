@@ -1,10 +1,11 @@
-import styles from "src/page/list/list.module.css";
+import styles from "src/page/list/TodoList.module.css";
 import Header from "../../layout/header/Header";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 
 interface TodoItem {
   _id: number;
@@ -21,9 +22,10 @@ const TodoList = (): JSX.Element => {
   const navigate = useNavigate();
 
 
-  const getTodoList = async () => {
+  const getTodoList = async (): Promise<void> => {
     try {
-    const response = await axios.get(`${ BASE_URL }/api/todolist`);
+    const response = 
+    await axios.get<TodoListResponse>(`${ BASE_URL }/api/todolist`);
 
     if (response.status === 200) {
       const todoListData: TodoItem[] = response.data.items;
@@ -41,14 +43,14 @@ const TodoList = (): JSX.Element => {
   const onChangeCheckBox = async (todoId: number): Promise<void> => {
     try {
       const todo: TodoItem | undefined 
-      = todoList.find((todo) => {
+      = todoList.find((todo: TodoItem) => {
         return todo._id === todoId;
       })
 
-      const updateTodoDone = !todo?.done;
+      const updateTodoDone: boolean = !todo?.done;
 
       const response = 
-      await axios.patch(`${ BASE_URL }/api/todoList/${ todoId }`,{
+      await axios.patch<AxiosResponse>(`${ BASE_URL }/api/todoList/${ todoId }`,{
         done: updateTodoDone
       });
 
@@ -64,11 +66,10 @@ const TodoList = (): JSX.Element => {
 
   const onClickDeleteTodo = async (todoId: number): Promise<void> => {
     try {
-      const isConfirmed: boolean = window.confirm("정말로 삭제하시겠습니까?");
-
-      if (isConfirmed) {
+      if (window.confirm("정말로 삭제하시겠습니까?")) {
         const response = 
-        await axios.delete(`${ BASE_URL }/api/todoList/${ todoId }`);
+        await axios.delete<AxiosResponse>(
+          `${ BASE_URL }/api/todoList/${ todoId }`);
 
         if (response.status === 200) {
           await getTodoList(); 
@@ -108,9 +109,12 @@ const TodoList = (): JSX.Element => {
           }} />
           <h3 
           className = {
-            todo.done ? `${ styles.title } ${ styles.checked }` 
-            : styles.title }
-          onClick = {() => navigate(`/detail${ TODO_ID }`)} >
+            todo.done ? 
+            `${ styles.title } 
+            ${ styles.checked }` 
+            : 
+            styles.title }
+          onClick = { () => navigate(`/detail/${ TODO_ID }`) } >
             { todo.title }
           </h3>
           <FontAwesomeIcon 

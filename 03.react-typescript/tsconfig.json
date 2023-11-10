@@ -15,11 +15,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": ".", // 기본 경로를 프로젝트 최상단으로 설정
-    "paths": {
-      "page/*": ["/src/pages/*"],
-      "layout/*": ["/src/layout/*"]
-    }
+    "baseUrl": "."
   },
   "include": ["src"]
 }

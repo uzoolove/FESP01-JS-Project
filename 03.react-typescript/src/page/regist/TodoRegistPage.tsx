@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../layout/header/Header";
 import styles from "./TodoRegist.module.css";
+import button from "src/styles/Button.module.css";
 import axios, { AxiosResponse } from "axios";
 
 
@@ -80,12 +81,16 @@ const TodoRegistPage = () => {
         <div className="button-area">
           <button
             type="button"
-            className="back-button"
+            className=
+            { `${ button.backButton } ${ button.button }` }
             onClick={handleBackBtnClick}
           >
             취소
           </button>
-          <button className="submit-button">등록</button>
+          <button className=
+          { `${ button.defaultButton } ${ button.button }` } >
+            등록
+            </button>
         </div>
       </form>
     </>
