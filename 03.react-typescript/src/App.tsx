@@ -1,7 +1,7 @@
-import "./App.css";
-import Footer from "./layout/Footer";
+import styles from "./App.module.css";
+import Footer from "./layout/footer/Footer";
 import { Route, Routes } from "react-router-dom";
-import TodoList from "./page/TodoList";
+import TodoList from "./page/list/TodoList";
 import TodoRegist from "./page/regist/TodoRegist";
 import TodoInfo from "./page/TodoInfo";
 
@@ -13,7 +13,6 @@ function App() {
         <Route path="/regist" element={<TodoRegist />} />
         <Route path="/detail" element={<TodoInfo />} />
       </Routes>
-
       <Footer />
     </div>
   );
