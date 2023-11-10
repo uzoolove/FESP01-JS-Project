@@ -4,7 +4,15 @@ import Header from "../../layout/header/Header";
 import styles from "./TodoRegist.module.css";
 import axios, { AxiosResponse } from "axios";
 
-const TodoRegist = () => {
+
+interface TodoRegist {
+  title: string;
+  content: string;
+  done?: boolean;
+}
+
+
+const TodoRegistPage = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState({ title: "", content: "" });
 
@@ -84,4 +92,4 @@ const TodoRegist = () => {
   );
 };
 
-export default TodoRegist;
+export default TodoRegistPage;
