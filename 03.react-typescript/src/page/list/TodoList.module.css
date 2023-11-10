@@ -1,0 +1,116 @@
+  /* 애니메이션 */
+  @keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+  }
+
+  /* ul 태그 */
+  .content {
+  height: 435px;
+  padding: 15px 10px;
+  overflow-y: scroll;
+  box-shadow: 0px 2px 10px -1px rgba(178, 166, 166, 0.688);
+  }
+
+  /* li 태그 */
+  .link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding: 0px 12px;
+  border-radius: 5px;
+  list-style: none;
+  box-shadow: 0px 5px 3px 1px rgba(224, 220, 220, 0.688);
+  }
+
+  .link:hover {
+  background-color: #e8d9ee;
+  box-shadow: 0px 0px 8px #f1eaf3;
+  transform: perspective(500px) translateY(-2px);
+  transition: all 0.3s ease-in-out;
+  }
+
+  .title {
+  padding: 15px 120px;
+  cursor: pointer;
+  text-decoration: none;
+  color: unset;
+  font-size: 23px;
+  font-weight: 500;
+  }
+
+  /* 체크 박스 */
+  .input {
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid #ccc;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  }
+
+  .input:hover {
+  background-color: white;
+  transform: perspective(500px) translateZ(100px);
+  transition: all 0.2s ease-in-out;
+  }
+
+  .input:checked {
+  border-color: #c081d9;
+  background-color: #c081d9;
+  animation: bounce 0.5s ease-in-out;
+  }
+
+  /* 체크 박스 클릭하면 선 긋기*/
+  .checked {
+  text-decoration: line-through;
+  opacity: 0.3;
+  }
+
+  /* 삭제 버튼 */
+  .faTrashCan {
+    font-size: 23px;
+    cursor: pointer;
+  }
+
+  .faTrashCan:hover {
+  color: rgb(214, 79, 79);
+  transform: perspective(500px) translateZ(130px);
+  transition: all 0.2s ease-in-out;
+  }
+
+  /* 등록 버튼 */
+  .button {
+  position: absolute;
+  top: 86%;
+  right: 3%;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: #c081d9;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 40px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.2) -4px 9px 25px -5px;
+  }
+
+  .button:hover {
+  background-color: #9a3bbf;
+  animation: bounce 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  }
