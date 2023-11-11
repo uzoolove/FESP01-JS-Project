@@ -1,10 +1,10 @@
-import styles from "src/page/list/TodoList.module.css";
-import Header from "../../layout/header/Header";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "src/page/list/TodoList.module.css";
+import Header from "src/layout/header/Header";
 
 
 interface TodoItem {
@@ -17,7 +17,8 @@ interface TodoItem {
 }
 
 const TodoList = (): JSX.Element => {
-  const BASE_URL = "http://localhost:33088";
+  const BASE_URL: string | undefined = 
+  process.env.REACT_APP_PORT_NUMBER;
   const [todoList, setTodoList] = useState<TodoItem[]>([]);
   const navigate = useNavigate();
 
@@ -85,6 +86,7 @@ const TodoList = (): JSX.Element => {
 
   useEffect(() => {
     getTodoList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
