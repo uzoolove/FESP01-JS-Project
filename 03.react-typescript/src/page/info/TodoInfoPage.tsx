@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import Header from '../../layout/header/Header';
-import styles from './todoInfo.module.css';
-import button from 'src/styles/Button.module.css';
 import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
+import Header from 'src/layout/header/Header';
+import styles from 'src/page/info/TodoInfo.module.css';
+import button from 'src/styles/Button.module.css';
 
 interface TodoItem {
   _id: number;
@@ -24,7 +24,8 @@ interface ContentKey {
 
 
 const TodoInfo = (): JSX.Element => {
-  const BASE_URL = 'http://localhost:33088';
+  const BASE_URL: string | undefined = 
+  process.env.REACT_APP_PORT_NUMBER;
 
   const { id } = useParams<string>();
   const navigate = useNavigate();
