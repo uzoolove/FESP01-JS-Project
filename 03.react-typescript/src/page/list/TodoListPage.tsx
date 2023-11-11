@@ -50,7 +50,8 @@ const TodoList = (): JSX.Element => {
       const updateTodoDone: boolean = !todo?.done;
 
       const response = 
-      await axios.patch<AxiosResponse>(`${ BASE_URL }/api/todoList/${ todoId }`,{
+      await axios.patch<AxiosResponse>(
+        `${ BASE_URL }/api/todoList/${ todoId }`,{
         done: updateTodoDone
       });
 
