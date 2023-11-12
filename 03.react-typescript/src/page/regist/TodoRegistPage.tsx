@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../../layout/header/Header";
-import styles from "./TodoRegist.module.css";
-import button from "src/styles/Button.module.css";
 import axios, { AxiosResponse } from "axios";
+import button from "src/styles/Button.module.css";
+import Header from "src/layout/header/Header";
+import styles from "src/page/regist/TodoRegist.module.css";
 
 
 interface TodoRegist {
@@ -13,7 +13,9 @@ interface TodoRegist {
 }
 
 
-const TodoRegistPage = () => {
+const TodoRegistPage = (): JSX.Element => {
+  const BASE_URL: string | undefined = 
+  process.env.REACT_APP_PORT_NUMBER;
   const navigate = useNavigate();
   const [input, setInput] = useState({ title: "", content: "" });
 
@@ -42,7 +44,7 @@ const TodoRegistPage = () => {
     try {
       if (window.confirm("등록 하시겠습니까?")) {
         const response = await axios.post<AxiosResponse>(
-          "http://localhost:33088/api/todolist",
+          `${ BASE_URL }/api/todolist`,
           body
         );
 
